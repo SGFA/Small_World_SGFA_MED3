@@ -15,6 +15,12 @@ public class Race implements Template {
 		this.effectReq = effectReq;
 	}
 
+	/**
+	 * Returns the properties of the race card.
+	 * 
+	 * @return name, unitAmount, effect, effectReq
+	 */
+	
 	public String debugStats() {
 		return "name: " + name + "\n" 
 				+ "unitAmount: " + unitAmount + "\n" 

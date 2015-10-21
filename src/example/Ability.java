@@ -14,7 +14,13 @@ public class Ability implements Template {
 		this.effect = effect;
 		this.effectReq = effectReq;
 	}
-	
+
+	/**
+	 * Returns the properties of the ability card.
+	 * 
+	 * @return name, unitAmount, effect, effectReq
+	 */
+
 	public String debugStats() {
 		return "name: " + name + "\n" 
 				+ "unitAmount: " + unitAmount + "\n" 
