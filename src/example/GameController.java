@@ -2,6 +2,11 @@ package example;
 
 import java.util.*;
 
+/**
+ * 
+ * The {@code GameController} is responsible for handling events during the game session e.g. keeping track of the card stack.  
+ *
+ */
 public class GameController {
 
 	// Databases for races and abilities

@@ -1,7 +1,7 @@
 package example;
 
 /**
- * The Race class specifies each race in the database.
+ * The {@code Race} class specifies each race in the database.
  * 
  * @param name
  *            the name of the race
@@ -12,6 +12,7 @@ package example;
  * @param effectReq
  *            the requirement for the effect to take place
  */
+
 public class Race implements Template {
 
 	String name;

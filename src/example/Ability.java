@@ -1,7 +1,7 @@
 package example;
 
 /**
- * The Ability class specifies each ability in the database.
+ * The {@code Ability} class specifies each ability in the database.
  * 
  * @param name
  *            the name of the ability
