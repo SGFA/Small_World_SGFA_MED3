@@ -7,6 +7,8 @@ public class Main {
 	public void initGame() {
 
 		gameController.initDb();
+		gameController.createStack();
+		gameController.debugStack();
 
 		// Debug database
 		System.out.println(gameController.abilityDb.get(0).debugStats());
