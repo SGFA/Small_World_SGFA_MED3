@@ -4,11 +4,11 @@ import java.util.*;
 
 public class GameController {
 
-	//Databases for races and abilities
+	// Databases for races and abilities
 	ArrayList<Ability> abilityDb = new ArrayList<Ability>();
 	ArrayList<Race> raceDb = new ArrayList<Race>();
 
-	//The stack of races and abilities
+	// The stack of races and abilities
 	ArrayList<ArrayList<Template>> stack = new ArrayList<ArrayList<Template>>();
 
 	public void initDb() {
