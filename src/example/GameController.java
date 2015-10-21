@@ -62,14 +62,14 @@ public class GameController {
         }
  
         public void debugStack() {
- 
+        		//list Race-id in the order it appears in the stack 
                 System.out.println("Race: ");
                 for (int i = 0; i < raceDb.size(); i++) {
  
                         System.out.println(raceId[i]);
  
                 }
-               
+            	//list Ability-id in the order it appears in the stack 
                 System.out.println("Ability: ");
                 for (int i = 0; i < abilityDb.size(); i++) {
  
