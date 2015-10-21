@@ -15,6 +15,7 @@ ArrayList<Race>	raceDb = new ArrayList<Race>();
 		abilityDb.add(new Ability("3",5,"fly","none"));
 		abilityDb.add(new Ability("4",5,"fly","none"));
 		
+		
 		//Initialize races 
 		raceDb.add(new Race("Amazon 1",8,"backup","conquer"));
 		raceDb.add(new Race("Amazon 2",8,"backup","conquer"));
