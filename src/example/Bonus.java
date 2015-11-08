@@ -6,8 +6,14 @@ public class Bonus implements Effect {
 		
 	}
 	
-	public int addPoint(int num){
-		return num;
+	public void test(int i) {
+		System.out.println("It worked");
+	}
+	
+	public void addPoints(Player player, int num){
+		
+		player.score += num;
+		
 	}
 	
 	public int addUnits(int num){

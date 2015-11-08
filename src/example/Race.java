@@ -15,7 +15,7 @@ package example;
 
 public class Race extends Template {
 
-	Race(String name, int unitAmount, Effect type, String effect, int amount, String effectReq) {
+	Race(String name, int unitAmount, String type, String effect, int amount, String effectReq) {
 		this.name = name;
 		this.unitAmount = unitAmount;
 		this.type = type;
@@ -24,18 +24,18 @@ public class Race extends Template {
 		this.effectReq = effectReq;
 	}
 	
-	Race(String name, int unitAmount, Effect type, String effect, String effectReq) {
-		this.name = name;
-		this.unitAmount = unitAmount;
-		this.type = type;
-		this.effect = effect;
-		this.effectReq = effectReq;
-	}
-	
-	Race(String name, int unitAmount, Bonus bonus, String string, int i, String string2) {
-		this.name = name;
-		this.unitAmount = unitAmount;
-	}
+//	Race(String name, int unitAmount, String type, String effect, String effectReq) {
+//		this.name = name;
+//		this.unitAmount = unitAmount;
+//		this.type = type;
+//		this.effect = effect;
+//		this.effectReq = effectReq;
+//	}
+//	
+//	Race(String name, int unitAmount, Bonus bonus, String string, int i, String string2) {
+//		this.name = name;
+//		this.unitAmount = unitAmount;
+//	}
 	
 	
 

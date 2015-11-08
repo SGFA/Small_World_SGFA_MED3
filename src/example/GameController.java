@@ -35,11 +35,9 @@ public class GameController {
 			player.get(currentPlayer).pair[1] = player.get(currentPlayer).pair[0];
 			player.get(currentPlayer).pair[0] = null;
 		}
-
 	}
 
 	public void debugPlayerAmount() {
 		System.out.println("Amount of players: " + player.size());
 	}
-
 }
