@@ -101,18 +101,27 @@ public class Stack {
 		abilityStack.remove(0);
 	}
 
-	public void debugStack() {
+	public String toString() {
+		
+		StringBuilder s = new StringBuilder(); 
+		
 		// list Race-id in the order it appears in the stack
-		System.out.println("Race: ");
+		s.append("Race: \n");
+		
 		for (int i = 0; i < raceStack.size(); i++) {
 
-			System.out.println("Id: " + i + " Name: " + raceStack.get(i).name);
+			s.append("Id: " + i + " Name: " + raceStack.get(i).name + "\n");
+			
+		}
+		
+		// list Ability-id in the order it appears in the stack
+		s.append("Ability: \n");
+		
+		for (int i = 0; i < abilityStack.size(); i++) {
+			
+			s.append("Id: " + i + " Name: " + abilityStack.get(i).name + "\n");
 
 		}
-		// list Ability-id in the order it appears in the stack
-		System.out.println("Ability: ");
-		for (int i = 0; i < abilityStack.size(); i++) {
-			System.out.println("Id: " + i + " Name: " + abilityStack.get(i).name);
-		}
+		return s.toString();
 	}
 }
