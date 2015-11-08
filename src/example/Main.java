@@ -10,19 +10,15 @@ public class Main {
 		gameController.createStack();
 		gameController.addPlayer();
 		gameController.setPair(0, 2);
-		System.out.println("Decline:");
 		gameController.decline(0);
-		System.out.println("Set pair nr 2:");
 		gameController.setPair(0, 2);
-		gameController.stack.debugStack();
-		System.out.println("Decline:");
-		System.out.println(gameController.race.type.getClass().getProtectionDomain().getCodeSource().getLocation().getPath());
-
-
-		System.out.println(gameController.player.get(0).pair[1].units);
-		gameController.player.get(0).pair[1].effect();
-		System.out.println(gameController.player.get(0).pair[1].units);
-
+		
+		System.out.println(gameController.player.get(0).score);
+		System.out.println(gameController.player.get(0).pair[0].race.type);
+		
+		gameController.player.get(0).effect(); // Activate effect on 'player 1'
+		System.out.println(gameController.player.get(0).score);
+		
 	
 	}
 

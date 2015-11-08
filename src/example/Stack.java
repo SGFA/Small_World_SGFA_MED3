@@ -22,17 +22,17 @@ public class Stack {
 
 		
 		// Initialize races
-		raceDb.add(new Race("AMAZONS",      6, new Bonus(), "addUnits",  4, "isConquering:true"));           //effect: adds 4 units | req: only while conquering 
-		raceDb.add(new Race("DWARVES",      3, new Bonus(), "addPoints", 1, "hasMine:true"));                //effect: additional coins for X fulfilled requirement | req: has mine
+//		raceDb.add(new Race("AMAZONS",      6, "Bonus", "addUnits",  4, "isConquering:true"));           //effect: adds 4 units | req: only while conquering 
+		raceDb.add(new Race("DWARVES",      3, "Bonus", "addPoints", 1, "hasMine:true"));                //effect: additional coins for X fulfilled requirement | req: has mine
 //		raceDb.add(new Race("ELVES",        6, "special: withdrawUnits",    "isConquered:true"));            //effect: withdraw units when conquered | req: losses a battle
 //		raceDb.add(new Race("GHOULS",       5, "buff: setImmortal (true)",  "inDecline:true"));              //effect: stays active on map when going into decline |req: when in decline
 //		raceDb.add(new Race("GIANTS",       6, "buff: addStrengh (+1)",     "isAdjacentToMountain: true"));  //effect: conquer region with one giant token less | req: region should be next to a mountain
-		raceDb.add(new Race("HUMANS",       5, new Bonus(), "addPoints",  1, "hasFarm:true"));                //effect: additional coins for X fulfilled requirement | req: has farm
-		raceDb.add(new Race("ORCS",         5, new Bonus(), "addPoints",  1, "isEmptyRegion:false"));         //effect: additional coins for each non-empty region conquered. | req: The region should be non-empty
-		raceDb.add(new Race("SKELETONS",    6, new Bonus(), "addUnits",  1/2,  "isEmptyRegion:false"));         //effect: 1+ unit for every two non-empty region conquered in the turn | req: region should be non-empty 
+		raceDb.add(new Race("HUMANS",       5, "Bonus", "addPoints",  1, "hasFarm:true"));                //effect: additional coins for X fulfilled requirement | req: has farm
+		raceDb.add(new Race("ORCS",         5, "Bonus", "addPoints",  1, "isEmptyRegion:false"));         //effect: additional coins for each non-empty region conquered. | req: The region should be non-empty
+//		raceDb.add(new Race("SKELETONS",    6, "Bonus", "addUnits",  1/2,  "isEmptyRegion:false"));         //effect: 1+ unit for every two non-empty region conquered in the turn | req: region should be non-empty 
 //		raceDb.add(new Race("TRITONS",      6, "buff: addStrengh (+1)",     "isAdjacentToWater: true"));     //effect: conquer region with one triton token less | req: region should be next to a lake or sea.
 //		raceDb.add(new Race("TROLLS",       5, "special: createTrollLair",    "isConquered:true"));            //effect: create troll lair in each occupied region | reg: region is occupied 
-		raceDb.add(new Race("WIZARD",       5, new Bonus(), "addPoints", 1,     "hasMagic:true"));               //effect: additional coins for X fulfilled requirement | req: has magic source 
+		raceDb.add(new Race("WIZARD",       5, "Bonus", "addPoints", 1,     "hasMagic:true"));               //effect: additional coins for X fulfilled requirement | req: has magic source 
 
 //  	raceDb.add(new Race("RATMEN", 8)); 
 
