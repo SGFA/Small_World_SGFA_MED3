@@ -2,31 +2,31 @@ package example;
 
 import java.util.ArrayList;
 
-public class GameController {
+class GameController {
 
-	Stack stack = new Stack();
-	ArrayList<Player> player = new ArrayList<Player>();
+	static Stack stack = new Stack();
+	static ArrayList<Player> player = new ArrayList<Player>();
 
-	Race race;
-	Ability ability;
+	static Race race;
+	static Ability ability;
 
-	public void createStack() {
+	public static void createStack() {
 		stack.initDb();
 		stack.initialize();
 		stack.shuffle();
 	}
 
-	public void addPlayer() {
+	public static void addPlayer() {
 		player.add(new Player());
 	}
 
-	public void setPair(int currentPlayer, int pos) {
+	public static void setPair(int currentPlayer, int pos) {
 		player.get(currentPlayer).pair[0] = new Pair(stack.raceStack.get(pos), stack.abilityStack.get(pos));
 		stack.raceStack.remove(pos);
 		stack.abilityStack.remove(pos);
 	}
 
-	public void decline(int currentPlayer) {
+	public static void decline(int currentPlayer) {
 		if (player.get(currentPlayer).pair[1] == null) {
 			player.get(currentPlayer).pair[1] = player.get(currentPlayer).pair[0];
 			player.get(currentPlayer).pair[0] = null;
@@ -37,7 +37,7 @@ public class GameController {
 		}
 	}
 
-	public void debugPlayerAmount() {
+	public static void debugPlayerAmount() {
 		System.out.println("Amount of players: " + player.size());
 	}
 }

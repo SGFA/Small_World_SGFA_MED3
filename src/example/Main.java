@@ -2,23 +2,20 @@ package example;
 
 
 public class Main {
-
-	GameController gameController = new GameController(); 
 	
 	public void initGame() {
 
-		gameController.createStack();
 		
+		GameController.createStack();
+		GameController.addPlayer();
+		GameController.setPair(0, 2);
+		GameController.decline(0);
+		GameController.setPair(0, 2);
+		GameController.decline(0);
+		GameController.decline(0);
 
-		gameController.addPlayer();
-		gameController.setPair(0, 2);
-		gameController.decline(0);
-		gameController.setPair(0, 2);
-		gameController.decline(0);
-		gameController.decline(0);
 
-
-		System.out.println(gameController.stack.toString());
+		System.out.println(GameController.stack.toString());
 
 		
 //		System.out.println(gameController.player.get(0).score);
