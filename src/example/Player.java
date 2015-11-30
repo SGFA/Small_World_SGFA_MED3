@@ -100,4 +100,23 @@ public class Player {
 		}
 		
 	}
+	
+	public void redeploy() {
+
+		// Run though all tiles on the board
+		for (Field field : GameController.currentBoard.allFields) {
+
+			// If this player owns the field
+			if (field.getFieldOwner()==1) {
+
+				// Set player's units to current amount of units plus (field's units-1)
+				pair[0].setUnits(pair[0].getUnits()+(field.getAmountOfUnits()-1));
+
+				// Set amount of units on this field to 1
+				field.setAmountOfUnits(1);
+
+			}
+		}
+	}
+
 }
