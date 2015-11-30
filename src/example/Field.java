@@ -47,15 +47,16 @@ public class Field {
 	private int amountOfUnits = 0;
 	
 	private int fieldOwner = 0;
-
 	
 	/**
 	 * @param  terrainType an enumerator which sets the type of terrain. 
 	 * Example: Terraintype.WATER
 	 * @see TerrainType
 	 */	
-	public Field(TerrainType terrainType) {
+	public Field(TerrainType terrainType, ArrayList<Field> allFields) {
 		// Constructor
+		
+		allFields.add(this);
 		
 		setDefenceValue(2);
 
@@ -65,6 +66,7 @@ public class Field {
 		if (this.terrainType.equals("Water")) {
 			setConquerable(false);
 		}
+		
 		
 		
 
