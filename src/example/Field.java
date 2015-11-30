@@ -44,16 +44,19 @@ public class Field {
 
 	// This array is supposed to be an array of units, we used strings as we don't have the 
 	// unit class yet
-	ArrayList<String> amountOfUnits = new ArrayList<String>();
-
+	private int amountOfUnits = 0;
+	
+	private int fieldOwner = 0;
 	
 	/**
 	 * @param  terrainType an enumerator which sets the type of terrain. 
 	 * Example: Terraintype.WATER
 	 * @see TerrainType
 	 */	
-	public Field(TerrainType terrainType) {
+	public Field(TerrainType terrainType, ArrayList<Field> allFields) {
 		// Constructor
+		
+		allFields.add(this);
 		
 		setDefenceValue(2);
 
@@ -63,6 +66,9 @@ public class Field {
 		if (this.terrainType.equals("Water")) {
 			setConquerable(false);
 		}
+		
+		
+		
 
 	}
 
@@ -163,6 +169,22 @@ public class Field {
 	// This method is private as conquerable is defined only in constructor
 	private void setConquerable(boolean conquerable) {
 		this.conquerable = conquerable;
+	}
+
+	int getAmountOfUnits() {
+		return amountOfUnits;
+	}
+
+	void setAmountOfUnits(int amountOfUnits) {
+		this.amountOfUnits = amountOfUnits;
+	}
+
+	int getFieldOwner() {
+		return fieldOwner;
+	}
+
+	void setFieldOwner(int fieldOwner) {
+		this.fieldOwner = fieldOwner;
 	}
 
 }

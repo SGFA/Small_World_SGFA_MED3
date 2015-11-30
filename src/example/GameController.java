@@ -6,6 +6,7 @@ class GameController {
 
 	static Stack stack = new Stack();
 	static ArrayList<Player> player = new ArrayList<Player>();
+	static MapTwoPlayer currentBoard;
 
 	static Race race;
 	static Ability ability;

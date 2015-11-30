@@ -13,7 +13,7 @@ public class Stack {
 	// Databases for races and abilities
 	private ArrayList<Race> raceDb = new ArrayList<Race>();
 	private ArrayList<Ability> abilityDb = new ArrayList<Ability>();
-
+	
 	// The id of races and abilities
 	ArrayList<Race> raceStack = new ArrayList<Race>();
 	ArrayList<Ability> abilityStack = new ArrayList<Ability>();
