@@ -9,7 +9,6 @@ public class Main {
 		GameController.createStack();
 		GameController.addPlayer();
 		GameController.setPair(0, 2);
-		GameController.decline(0);
 		GameController.setPair(0, 2);
 		//GameController.decline(0);
 		//GameController.decline(0);

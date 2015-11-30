@@ -17,8 +17,11 @@ class GameController {
 		stack.shuffle();
 	}
 
-	public static void addPlayer() {
-		players.add(new Player());
+	public static void addPlayer(int amount) {
+		
+		for (int i = 1; i <= amount; i++) {
+			players.add(new Player(i));	
+		}
 	}
 
 	public static void setPair(int currentPlayer, int pos) {

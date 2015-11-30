@@ -12,6 +12,11 @@ public class Player {
 	Pair[] pair = new Pair[2];
 	boolean hasFields = false;
 	int attackingUnits=0;
+	private int id;
+	
+	public Player(int id) {
+		this.id = id;
+	}
 
 	// public void decline(){
 	// pair[0].setActive(false);
@@ -107,7 +112,7 @@ public class Player {
 		for (Field field : GameController.currentBoard.allFields) {
 
 			// If this player owns the field
-			if (field.getFieldOwner()==1) {
+			if (field.getFieldOwner()==id) {
 
 				// Set player's units to current amount of units plus (field's units-1)
 				pair[0].setUnits(pair[0].getUnits()+(field.getAmountOfUnits()-1));
@@ -117,6 +122,10 @@ public class Player {
 
 			}
 		}
+	}
+
+	private int getId() {
+		return id;
 	}
 
 }
