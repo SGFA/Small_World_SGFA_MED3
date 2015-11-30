@@ -14,7 +14,7 @@ public class Pair {
 	
 	Pair[] pair = new Pair[2];
 
-	int units;
+	private int units;
 	boolean active; // if active the abilities apply and the player can control
 					// the race
 
@@ -23,7 +23,7 @@ public class Pair {
 	public Pair(Race race, Ability ability) {
 		this.race = race;
 		this.ability = ability;
-		units = race.unitAmount + ability.unitAmount;
+		setUnits(race.unitAmount + ability.unitAmount);
 	}
 
 	public void set(Race race, Ability ability) {
@@ -35,6 +35,14 @@ public class Pair {
 			return active = true;
 		else
 			return active = false;
+	}
+
+	int getUnits() {
+		return units;
+	}
+
+	void setUnits(int units) {
+		this.units = units;
 	}
 
 

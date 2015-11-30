@@ -5,7 +5,7 @@ import java.util.ArrayList;
 class GameController {
 
 	static Stack stack = new Stack();
-	static ArrayList<Player> player = new ArrayList<Player>();
+	static ArrayList<Player> players = new ArrayList<Player>();
 	static MapTwoPlayer currentBoard;
 
 	static Race race;
@@ -18,27 +18,27 @@ class GameController {
 	}
 
 	public static void addPlayer() {
-		player.add(new Player());
+		players.add(new Player());
 	}
 
 	public static void setPair(int currentPlayer, int pos) {
-		player.get(currentPlayer).pair[0] = new Pair(stack.raceStack.get(pos), stack.abilityStack.get(pos));
+		players.get(currentPlayer).pair[0] = new Pair(stack.raceStack.get(pos), stack.abilityStack.get(pos));
 		stack.raceStack.remove(pos);
 		stack.abilityStack.remove(pos);
 	}
 
 	public static void decline(int currentPlayer) {
-		if (player.get(currentPlayer).pair[1] == null) {
-			player.get(currentPlayer).pair[1] = player.get(currentPlayer).pair[0];
-			player.get(currentPlayer).pair[0] = null;
+		if (players.get(currentPlayer).pair[1] == null) {
+			players.get(currentPlayer).pair[1] = players.get(currentPlayer).pair[0];
+			players.get(currentPlayer).pair[0] = null;
 		} else {
-			stack.addPair(player.get(currentPlayer).pair[1].race, player.get(currentPlayer).pair[1].ability);
-			player.get(currentPlayer).pair[1] = player.get(currentPlayer).pair[0];
-			player.get(currentPlayer).pair[0] = null;
+			stack.addPair(players.get(currentPlayer).pair[1].race, players.get(currentPlayer).pair[1].ability);
+			players.get(currentPlayer).pair[1] = players.get(currentPlayer).pair[0];
+			players.get(currentPlayer).pair[0] = null;
 		}
 	}
 
 	public static void debugPlayerAmount() {
-		System.out.println("Amount of players: " + player.size());
+		System.out.println("Amount of players: " + players.size());
 	}
 }
