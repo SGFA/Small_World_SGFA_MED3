@@ -94,7 +94,7 @@ public class Player {
 			}
 		}
 		else{
-			if(clickedField.isConquerable()==true){
+			if(clickedField.isConquerable()==false){
 				
 			}
 				
