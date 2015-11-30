@@ -10,6 +10,8 @@ public class Player {
 
 	int score;
 	Pair[] pair = new Pair[2];
+	boolean hasFields = false;
+	int attackingUnits=0;
 
 	// public void decline(){
 	// pair[0].setActive(false);
@@ -77,23 +79,25 @@ public class Player {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	}
-	
-	public void redeploy() {
-
-		// Run though all tiles on the board
-		for (Field field : GameController.currentBoard.allFields) {
-
-			// If this player owns the field
-			if (field.getFieldOwner()==1) {
-
-				// Set player's units to current amount of units plus (field's units-1)
-				pair[0].setUnits(pair[0].getUnits()+(field.getAmountOfUnits()-1));
-
-				// Set amount of units on this field to 1
-				field.setAmountOfUnits(1);
-
+	}		
+		
+	public void conquer(Field clickedField){
+		if(hasFields==false){
+			if(clickedField.isConquerable()==true)
+			{
+				if(clickedField.isBorderPosition()==true)
+				{
+					attackingUnits=clickedField.getDefenceValue()+1;
+					
+				}
 			}
 		}
+		else{
+			if(clickedField.isConquerable()==false){
+				
+			}
+				
+		}
+		
 	}
 }

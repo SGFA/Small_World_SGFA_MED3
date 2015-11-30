@@ -2,11 +2,13 @@ package example;
 
 public class Ability extends Template {
 
-	Ability(String name, int unitAmount, String effect, String effectReq) {
+	Ability(String name, int unitAmount, String effect, String effectReq, String condition) {
 		this.name = name;
 		this.unitAmount = unitAmount;
 		this.effect = effect;
 		this.effectReq = effectReq;
+		this.condition = condition; 
+		
 	}
 
 	/**
@@ -19,7 +21,8 @@ public class Ability extends Template {
 		return "name: " + name + "\n" 
 				+ "unitAmount: " + unitAmount + "\n" 
 				+ "effect: " + effect + "\n" 
-				+ "effectReq: " + effectReq;
+				+ "effectReq: " + effectReq
+				+ "effect condition"+ condition;
 	}
 
 }
