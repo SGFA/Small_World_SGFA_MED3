@@ -9,6 +9,8 @@ public class Player {
 
 	int score;
 	Pair[] pair = new Pair[2];
+	boolean hasFields = false;
+	int attackingUnits=0;
 
 	// public void decline(){
 	// pair[0].setActive(false);
@@ -80,7 +82,23 @@ public class Player {
 		
 	}
 	
-	public void conquer(){
+	public void conquer(Field clickedField){
+		if(hasFields==false){
+			if(clickedField.isConquerable()==true)
+			{
+				if(clickedField.isBorderPosition()==true)
+				{
+					attackingUnits=clickedField.getDefenceValue()+1;
+					
+				}
+			}
+		}
+		else{
+			if(clickedField.isConquerable()==true){
+				
+			}
+				
+		}
 		
 	}
 	
