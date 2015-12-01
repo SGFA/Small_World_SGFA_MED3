@@ -93,25 +93,11 @@ public class Player {
 		}
 	}
 
-	public void conquer(Field clickedField){
-		boolean hasFields =false;
-		for(Field otherField : GameController.currentBoard.allFields)
-		{
-			if (otherField.getFieldOwner()==id) {
-				hasFields=true;
-			}
-		}
-		
-		boolean ownAnyAdjacencies = false;
-		for(Field otherField: clickedField.adjacencies){
-			if (otherField.getFieldOwner()==id) {
-				ownAnyAdjacencies=true;
-			}
-		}
-		
-		if(hasFields==false && clickedField.isBorderPosition()==true 
-				&& clickedField.isConquerable()==true){
-				
+	
+	
+	//Method called when conquering fields
+		public void takeField(Field clickedField){
+			// If you have necessary amount of units you may take the field
 			if(pair[0].getUnits()>=clickedField.getDefenceValue()+1)
 			{
 					attackingUnits=clickedField.getDefenceValue()+1;	
@@ -120,6 +106,8 @@ public class Player {
 					pair[0].setUnits(pair[0].getUnits()-attackingUnits);
 			}
 			
+			/*If you don't have the necessary amount of units you may use the die to
+			add to your amount of units*/
 			else
 			{
 			int reinforcements = Dice.roll();
@@ -130,36 +118,47 @@ public class Player {
 				clickedField.setAmountOfUnits(attackingUnits);
 				pair[0].setUnits(pair[0].getUnits()-attackingUnits);
 			}
-			else{System.out.println("You cant conquer this");}
+			else{System.out.println("You dont have enough units to take this field");}
 		
 		}
-		}
-		
-		
-		else if(clickedField.isConquerable()==true && ownAnyAdjacencies==true) {
-			if(pair[0].getUnits()>=clickedField.getDefenceValue()+1)
-			{
-					attackingUnits=clickedField.getDefenceValue()+1;	
-					clickedField.setFieldOwner(1);
-					clickedField.setAmountOfUnits(attackingUnits);
-					pair[0].setUnits(pair[0].getUnits()-attackingUnits);
-			}
 			
-			else
-			{
-			int reinforcements = Dice.roll();
-			if (pair[0].getUnits()+reinforcements>=clickedField.getDefenceValue()+1)
-			{
-				attackingUnits=clickedField.getDefenceValue()+1;	
-				clickedField.setFieldOwner(1);
-				clickedField.setAmountOfUnits(attackingUnits);
-				pair[0].setUnits(pair[0].getUnits()-attackingUnits);
-			}
-			else{System.out.println("Du er bare en nederen mennesker..");}
-		
 		}
+
+		//Method used for Conquering fields in the first phase of each turn
+		public void conquer(Field clickedField){
+			
+			//Check is the current player has owns any fields
+			boolean hasFields =false;
+			for(Field otherField : GameController.currentBoard.allFields)
+			{
+				if (otherField.getFieldOwner()==id) {
+					hasFields=true;
 				}
 			}
+			
+			//Checks what fields are adjacent to the fields the current player owns
+			boolean ownAnyAdjacencies = false;
+			for(Field otherField: clickedField.adjacencies){
+				if (otherField.getFieldOwner()==id) {
+					ownAnyAdjacencies=true;
+				}
+			}
+			
+			/*If the current player doesn't own any fields he must choose a
+			 * conquerable border position*/
+			if(hasFields==false && clickedField.isBorderPosition()==true 
+					&& clickedField.isConquerable()==true)
+			{		
+				takeField(clickedField);
+			}
+			
+			//if the current player does own fields he can choose any field adjacent to his or her field(s)
+			else if(clickedField.isConquerable()==true && ownAnyAdjacencies==true
+					&& hasFields==true)
+			{
+				takeField(clickedField);
+			}
+		}
 
 	public void redeploy() {
 
