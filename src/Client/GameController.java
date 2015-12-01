@@ -1,6 +1,7 @@
 package Client;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import Map.MapHandler;
 
@@ -17,14 +18,36 @@ public class GameController {
 		stack.shuffle();
 	}
 
-	public static void addPlayer(int amount) {
+	/**
+	 * Adds an amount of players to the game.
+	 * @param amount the amount of players you want to add
+	 */
+	public static void addPlayers(int amount) {
 		
 		for (int i = 1; i <= amount; i++) {
 			players.add(new Player(i));	
 		}		
 	}
 	
-	public static void initlialize() {
+	/**
+	 * Removes a player from the game. Makes sure to reassign the player IDs in the new array order.
+	 * @param id the assigned number of the player you want to remove
+	 */
+	public static void removePlayer(int id) {
+		
+		for (Player player: players) {
+			if (player.getId()==id) players.remove(player);
+		}
+		
+		for (int i = 0; i < players.size(); i++) {
+			if (players.get(i).getId()!=i+1) {
+				players.get(i).setId(i+1);
+			}
+		}
+		
+	}
+	
+	public static void initialize() {
 		MapHandler.initialize(players.size());
 	}
 
