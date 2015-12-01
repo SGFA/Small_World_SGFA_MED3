@@ -6,32 +6,32 @@ public class MapTwoPlayer extends Map {
 	
 	public ArrayList<Field>allFields = new ArrayList<Field>();
 	
-	Field field1pt1 = new Field(TerrainType.WATER, allFields, new Field.Coordinate(3,4));
-	Field field1pt2 = new Field(TerrainType.FARMLAND,allFields);
-	Field field1pt3 = new Field(TerrainType.FOREST,allFields);	
-	Field field1pt4 = new Field(TerrainType.SWAMP,allFields);	
-	Field field1pt5 = new Field(TerrainType.HILL,allFields);
+	Field field1pt1 = new Field(TerrainType.WATER, allFields, 		new Field.Coordinate(3,56));
+	Field field1pt2 = new Field(TerrainType.FARMLAND,allFields, 	new Field.Coordinate(206,56));
+	Field field1pt3 = new Field(TerrainType.FOREST,allFields, 		new Field.Coordinate(334,56));	
+	Field field1pt4 = new Field(TerrainType.SWAMP,allFields, 		new Field.Coordinate(418,56));	
+	Field field1pt5 = new Field(TerrainType.HILL,allFields, 		new Field.Coordinate(582,56));
 		
-	Field field2pt1 = new Field(TerrainType.MOUNTAINLAND,allFields);	
-	Field field2pt2 = new Field(TerrainType.HILL,allFields);
-	Field field2pt3 = new Field(TerrainType.WATER,allFields);
-	Field field2pt4 = new Field(TerrainType.MOUNTAINLAND,allFields);	
-	Field field2pt5 = new Field(TerrainType.FARMLAND,allFields);
-	Field field2pt6 = new Field(TerrainType.FOREST,allFields);
+	Field field2pt1 = new Field(TerrainType.MOUNTAINLAND,allFields, new Field.Coordinate(0,131));	
+	Field field2pt2 = new Field(TerrainType.HILL,allFields, 		new Field.Coordinate(215,141));
+	Field field2pt3 = new Field(TerrainType.WATER,allFields, 		new Field.Coordinate(321,56));
+	Field field2pt4 = new Field(TerrainType.MOUNTAINLAND,allFields, new Field.Coordinate(425,134));	
+	Field field2pt5 = new Field(TerrainType.FARMLAND,allFields, 	new Field.Coordinate(520,106));
+	Field field2pt6 = new Field(TerrainType.FOREST,allFields, 		new Field.Coordinate(639,106));
 	
-	Field field3pt1 = new Field(TerrainType.FARMLAND,allFields);
-	Field field3pt2 = new Field(TerrainType.FOREST,allFields);
-	Field field3pt3 = new Field(TerrainType.FARMLAND,allFields);
-	Field field3pt4 = new Field(TerrainType.HILL,allFields);
-	Field field3pt5 = new Field(TerrainType.MOUNTAINLAND,allFields);
+	Field field3pt1 = new Field(TerrainType.FARMLAND,allFields, 	new Field.Coordinate(0,233));
+	Field field3pt2 = new Field(TerrainType.FOREST,allFields, 		new Field.Coordinate(228,252));
+	Field field3pt3 = new Field(TerrainType.FARMLAND,allFields, 	new Field.Coordinate(421,237));
+	Field field3pt4 = new Field(TerrainType.HILL,allFields, 		new Field.Coordinate(521,184));
+	Field field3pt5 = new Field(TerrainType.MOUNTAINLAND,allFields, new Field.Coordinate(698,210));
 	
-	Field field4pt1 = new Field(TerrainType.SWAMP,allFields);
-	Field field4pt2 = new Field(TerrainType.HILL,allFields);
-	Field field4pt3 = new Field(TerrainType.SWAMP,allFields);
-	Field field4pt4 = new Field(TerrainType.MOUNTAINLAND,allFields);
-	Field field4pt5 = new Field(TerrainType.SWAMP,allFields);
-	Field field4pt6 = new Field(TerrainType.FOREST,allFields);
-	Field field4pt7 = new Field(TerrainType.WATER,allFields);
+	Field field4pt1 = new Field(TerrainType.SWAMP,allFields, 		new Field.Coordinate(0,334));
+	Field field4pt2 = new Field(TerrainType.HILL,allFields, 		new Field.Coordinate(120,323));
+	Field field4pt3 = new Field(TerrainType.SWAMP,allFields, 		new Field.Coordinate(327,359));
+	Field field4pt4 = new Field(TerrainType.MOUNTAINLAND,allFields, new Field.Coordinate(434,396));
+	Field field4pt5 = new Field(TerrainType.SWAMP,allFields, 		new Field.Coordinate(543,326));
+	Field field4pt6 = new Field(TerrainType.FOREST,allFields, 		new Field.Coordinate(641,294));
+	Field field4pt7 = new Field(TerrainType.WATER,allFields, 		new Field.Coordinate(622,346));
 	
 	public MapTwoPlayer() {
 		createTwoPlayerMap();
