@@ -10,33 +10,31 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.gui.MouseOverArea;
 import org.newdawn.slick.state.StateBasedGame;
 
-import Map.Map;
 import Menu.CheckPlayer;
-import Menu.Server_menu;
+import Menu.Welcome_Screen;
+import map_package.Map;
 
 public class GameHandler extends StateBasedGame {
 
+	
 	public static final String gamename = "SmallWorlds";
-	public static final int menu = 0;
-	public static final int server = 1;
-	public static final int client = 2;
+	public static final int WELCOME_SCREEN = 0;
+	public static final int GAME = 1;
+
 	
 	public GameHandler(String gamename) {
 		
 		super(gamename);
-		this.addState(new Server_menu(menu));
-		this.addState(new Game(client));
-		this.addState(new CheckPlayer(server));
+		this.addState(new Welcome_Screen(WELCOME_SCREEN));
+		this.addState(new Game(GAME));
+
 	}
 	
 	public void initStatesList (GameContainer gc) throws SlickException {
-		this.getState(menu).init(gc, this);
-		this.getState(client).init(gc, this);
-		this.enterState(menu);
-	}
+		this.getState(GAME).init(gc, this);
+		this.enterState(WELCOME_SCREEN);
 
-	Image field = null;
-	MouseOverArea moa;
+	}
 
 	public static void setup() {
 		

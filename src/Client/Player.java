@@ -8,8 +8,8 @@ import com.sun.org.apache.xpath.internal.operations.Bool;
 
 import Client.Dice;
 import Client.GameController;
-import Map.Field;
-import Map.Map;
+import map_package.Field;
+import map_package.Map;
 
 public class Player {
 

@@ -63,15 +63,16 @@ public class CheckPlayer extends BasicGameState {
 
 		// if two players has been connected to the system then press the start
 		// key the game will start.
+		
 
-		if (playerNumber) {
 
-			if ((posX > 310 && posX < 310 + 100) && (posY < 300 && posY > 300 - 95)) {
 				if (Mouse.isButtonDown(0)) {
+					System.out.println("hello");
+
 					System.out.println("working");
 					sbg.enterState(2);
-				}
-			}
+				
+			
 		}
 	}
 
