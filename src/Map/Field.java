@@ -9,6 +9,34 @@ import java.util.ArrayList;
  * @see TerrainType
  */
 public class Field {
+	
+	class Coordinate {
+		
+		private int x;
+		private int y;
+		
+		public Coordinate(int x, int y) {
+			this.setX(x);
+			this.setY(y);
+		}
+
+		int getY() {
+			return y;
+		}
+
+		private void setY(int y) {
+			this.y = Math.abs(y);
+		}
+
+		int getX() {
+			return x;
+		}
+
+		private void setX(int x) {
+			this.x = Math.abs(x);
+		}
+			
+	}
 
 	// The innate defence value of a field. Starts at 2, which is set in the constructor below. 
 	// The idea is that this value will always equal itself + the size of the arraylist of units, 
@@ -42,6 +70,11 @@ public class Field {
 	 */
 	public ArrayList<Field> adjacencies = new ArrayList<Field>();
 
+	/**
+	 * Contains an x.y coordinate for each field for use in visualization.
+	 */
+	Coordinate coordinate;
+	
 	// This array is supposed to be an array of units, we used strings as we don't have the 
 	// unit class yet
 	private int amountOfUnits = 0;
@@ -53,8 +86,10 @@ public class Field {
 	 * Example: Terraintype.WATER
 	 * @see TerrainType
 	 */	
-	public Field(TerrainType terrainType, ArrayList<Field> allFields) {
+	public Field(TerrainType terrainType, ArrayList<Field> allFields, Coordinate coordinate) {
 		// Constructor
+		
+		this.coordinate = coordinate;
 		
 		allFields.add(this);
 		
