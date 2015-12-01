@@ -1,4 +1,4 @@
-package example;
+package Client;
 
 public class Bonus implements Effect {
 	

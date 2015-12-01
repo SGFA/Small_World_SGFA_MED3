@@ -1,4 +1,4 @@
-package example;
+package Client;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -6,14 +6,16 @@ import java.util.Iterator;
 
 import com.sun.org.apache.xpath.internal.operations.Bool;
 
+import Map.Field;
+
 public class Player {
 
 	int score;
 	Pair[] pair = new Pair[2];
 	boolean hasFields = false;
-	int attackingUnits=0;
+	int attackingUnits = 0;
 	private int id;
-	
+
 	public Player(int id) {
 		this.id = id;
 	}
@@ -33,8 +35,10 @@ public class Player {
 	// attack()
 
 	/*
-	 * This method looks for the type of effect in the database and instantiates the corresponding class as an object. 
-	 * The effect of that particular object is then invoked with specified parameters also found in the database.  
+	 * This method looks for the type of effect in the database and instantiates
+	 * the corresponding class as an object. The effect of that particular
+	 * object is then invoked with specified parameters also found in the
+	 * database.
 	 */
 	public void effect() {
 
@@ -51,12 +55,13 @@ public class Player {
 
 		try {
 
-			// Get class by name (String) in package 
-			clazz = Class.forName("example." + pair[0].race.type);		
+			// Get class by name (String) in package
+			clazz = Class.forName("example." + pair[0].race.type);
 
 			Object object = clazz.newInstance();
 
-			// Look for method in the database corresponding to the race. 'param' denotes the different overloads as seen above 
+			// Look for method in the database corresponding to the race.
+			// 'param' denotes the different overloads as seen above
 			Method method = clazz.getDeclaredMethod(pair[0].race.effect, param);
 
 			// Invoke method from the database with parameters
@@ -84,38 +89,36 @@ public class Player {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	}		
-		
-	public void conquer(Field clickedField){
-		if(hasFields==false){
-			if(clickedField.isConquerable()==true)
-			{
-				if(clickedField.isBorderPosition()==true)
-				{
-					attackingUnits=clickedField.getDefenceValue()+1;
-					
+	}
+
+	public void conquer(Field clickedField) {
+		if (hasFields == false) {
+			if (clickedField.isConquerable() == true) {
+				if (clickedField.isBorderPosition() == true) {
+					attackingUnits = clickedField.getDefenceValue() + 1;
+
 				}
 			}
-		}
-		else{
-			if(clickedField.isConquerable()==false){
-				
+		} else {
+			if (clickedField.isConquerable() == false) {
+
 			}
-				
+
 		}
-		
+
 	}
-	
+
 	public void redeploy() {
 
 		// Run though all tiles on the board
 		for (Field field : GameController.currentBoard.allFields) {
 
 			// If this player owns the field
-			if (field.getFieldOwner()==id) {
+			if (field.getFieldOwner() == id) {
 
-				// Set player's units to current amount of units plus (field's units-1)
-				pair[0].setUnits(pair[0].getUnits()+(field.getAmountOfUnits()-1));
+				// Set player's units to current amount of units plus (field's
+				// units-1)
+				pair[0].setUnits(pair[0].getUnits() + (field.getAmountOfUnits() - 1));
 
 				// Set amount of units on this field to 1
 				field.setAmountOfUnits(1);
