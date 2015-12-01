@@ -2,7 +2,7 @@ package Client;
 
 import java.util.ArrayList;
 
-import Map.MapHandler;
+import map_package.MapHandler;
 
 public class GameController {
 

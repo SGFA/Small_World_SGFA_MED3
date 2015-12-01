@@ -4,13 +4,13 @@ import org.lwjgl.input.Mouse;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.*;
 
-public class Server_menu extends BasicGameState {
+public class Welcome_Screen extends BasicGameState {
 	
 	private Image play_img;
 	private Image exit_img;
 	private Image background_img;
 
-	public Server_menu(int state) {
+	public Welcome_Screen(int state) {
 
 	}
 

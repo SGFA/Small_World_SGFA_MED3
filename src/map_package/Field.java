@@ -1,6 +1,8 @@
-package Map;
+package map_package;
 
 import java.util.ArrayList;
+
+import org.newdawn.slick.Image;
 
 /**
  * Creates a field, using the TerrainType enumerator as a parameter to set the terrain type.
@@ -18,12 +20,14 @@ public class Field {
 	
 	private int posX;
 	private int posY; 
+	public Image image;
 	
-	public Field(TerrainType terrainType, ArrayList<Field> allFields, int posX, int posY) {
+	public Field(TerrainType terrainType, ArrayList<Field> allFields, int posX, int posY, Image image) {
 		// Constructor
 				
 		this.setPosX(posX);
 		this.setPosY(posY);
+		this.image = image;
 		
 		allFields.add(this);
 		
@@ -205,5 +209,7 @@ public class Field {
 	void setPosY(int posY) {
 		this.posY = posY;
 	}
+
+
 
 }

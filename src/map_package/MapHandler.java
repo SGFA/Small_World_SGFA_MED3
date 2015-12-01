@@ -1,4 +1,4 @@
-package Map;
+package map_package;
 
 public class MapHandler {
 	
