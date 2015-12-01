@@ -7,6 +7,9 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
+import Map.Map;
+import Map.MapTwoPlayer;
+
 public class Game extends BasicGameState {
 
 	GameController gameController = new GameController();
@@ -22,7 +25,7 @@ public class Game extends BasicGameState {
 	public void render(GameContainer gc, StateBasedGame sbg, org.newdawn.slick.Graphics g) throws SlickException {
 		// TODO Auto-generated method stub
 		clientBackground.draw();
-
+		
 		if (quit == true) {
 			g.drawString("Resume (R)", 20, 50);
 			g.drawString("Menu (M)", 20, 100);

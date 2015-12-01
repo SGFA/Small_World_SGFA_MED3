@@ -1,12 +1,28 @@
 package Map;
 
 public class Map {
-	
-	public void createTwoPlayerMap(){
-		
-		MapTwoPlayer map = new MapTwoPlayer();
-		map.field1pt1.isAdjacentTo(map.field1pt2);
-		
-	}
 
+	public void initializeMap(int playerCount) {
+
+		switch (playerCount) {
+		case 1:
+			break;
+		case 2:
+			MapTwoPlayer map = new MapTwoPlayer();
+			break;
+		case 3:
+			break;
+
+		case 4:
+			break;
+
+		case 5:
+			break;
+
+		case 6:
+			break;
+
+		}
+
+	}
 }

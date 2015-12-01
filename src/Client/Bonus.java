@@ -1,6 +1,6 @@
 package Client;
 
-public class Bonus implements Effect {
+public class Bonus extends Template {
 	
 	Bonus(){
 		

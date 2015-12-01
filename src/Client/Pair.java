@@ -10,7 +10,6 @@ public class Pair {
 	
 	Race race;
 	Ability ability;
-	Effect effect; 
 	
 	Pair[] pair = new Pair[2];
 

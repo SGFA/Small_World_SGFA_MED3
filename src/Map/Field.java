@@ -10,33 +10,60 @@ import java.util.ArrayList;
  */
 public class Field {
 	
-	class Coordinate {
+	/**
+	 * @param  terrainType an enumerator which sets the type of terrain. 
+	 * Example: Terraintype.WATER
+	 * @see TerrainType
+	 */	
+	
+	private int posX;
+	private int posY; 
+	
+	public Field(TerrainType terrainType, ArrayList<Field> allFields, int posX, int posY) {
+		// Constructor
+				
+		this.setPosX(posX);
+		this.setPosY(posY);
 		
-		private int x;
-		private int y;
+		allFields.add(this);
 		
-		public Coordinate(int x, int y) {
-			this.setX(x);
-			this.setY(y);
-		}
+		setDefenceValue(2);
 
-		int getY() {
-			return y;
+		setTerrainType(terrainType);
+		
+		// If statement which sets conquerable to true if field is water
+		if (this.terrainType.equals("Water")) {
+			setConquerable(false);
 		}
-
-		private void setY(int y) {
-			this.y = Math.abs(y);
-		}
-
-		int getX() {
-			return x;
-		}
-
-		private void setX(int x) {
-			this.x = Math.abs(x);
-		}
-			
 	}
+	
+//	class Coordinate {
+//		
+//		private int x;
+//		private int y;
+//		
+//		public Coordinate(int x, int y) {
+//			this.setX(x);
+//			this.setY(y);
+//		}
+//
+//		int getY() {
+//			return y;
+//		}
+//
+//		private void setY(int y) {
+//			this.y = Math.abs(y);
+//		}
+//
+//		int getX() {
+//			return x;
+//		}
+//
+//		private void setX(int x) {
+//			this.x = Math.abs(x);
+//		}
+//			
+//	}
 
 	// The innate defence value of a field. Starts at 2, which is set in the constructor below. 
 	// The idea is that this value will always equal itself + the size of the arraylist of units, 
@@ -69,11 +96,6 @@ public class Field {
 	 * @see Field.isAdjacentTo();
 	 */
 	public ArrayList<Field> adjacencies = new ArrayList<Field>();
-
-	/**
-	 * Contains an x.y coordinate for each field for use in visualization.
-	 */
-	Coordinate coordinate;
 	
 	// This array is supposed to be an array of units, we used strings as we don't have the 
 	// unit class yet
@@ -81,32 +103,6 @@ public class Field {
 	
 	private int fieldOwner = 0;
 	
-	/**
-	 * @param  terrainType an enumerator which sets the type of terrain. 
-	 * Example: Terraintype.WATER
-	 * @see TerrainType
-	 */	
-	public Field(TerrainType terrainType, ArrayList<Field> allFields, Coordinate coordinate) {
-		// Constructor
-		
-		this.coordinate = coordinate;
-		
-		allFields.add(this);
-		
-		setDefenceValue(2);
-
-		setTerrainType(terrainType);
-		
-		// If statement which sets conquerable to true if field is water
-		if (this.terrainType.equals("Water")) {
-			setConquerable(false);
-		}
-		
-		
-		
-
-	}
-
 	/**
 	 * Method that uses a switch and the construction parameters to set the terrain type for 
 	 * the field via our TerrainType enumerator.
@@ -220,6 +216,22 @@ public class Field {
 
 	public void setFieldOwner(int fieldOwner) {
 		this.fieldOwner = fieldOwner;
+	}
+
+	int getPosX() {
+		return posX;
+	}
+
+	void setPosX(int posX) {
+		this.posX = posX;
+	}
+
+	int getPosY() {
+		return posY;
+	}
+
+	void setPosY(int posY) {
+		this.posY = posY;
 	}
 
 }
