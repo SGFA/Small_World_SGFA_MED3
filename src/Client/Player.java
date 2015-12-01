@@ -6,6 +6,8 @@ import java.util.Iterator;
 
 import com.sun.org.apache.xpath.internal.operations.Bool;
 
+import Client.Dice;
+import Client.GameController;
 import Map.Field;
 
 public class Player {
@@ -91,22 +93,73 @@ public class Player {
 		}
 	}
 
-	public void conquer(Field clickedField) {
-		if (hasFields == false) {
-			if (clickedField.isConquerable() == true) {
-				if (clickedField.isBorderPosition() == true) {
-					attackingUnits = clickedField.getDefenceValue() + 1;
-
+	public void conquer(Field clickedField){
+		boolean hasFields =false;
+		for(Field otherField : GameController.currentBoard.allFields)
+		{
+			if (otherField.getFieldOwner()==id) {
+				hasFields=true;
+			}
+		}
+		
+		boolean ownAnyAdjacencies = false;
+		for(Field otherField: clickedField.adjacencies){
+			if (otherField.getFieldOwner()==id) {
+				ownAnyAdjacencies=true;
+			}
+		}
+		
+		if(hasFields==false && clickedField.isBorderPosition()==true 
+				&& clickedField.isConquerable()==true){
+				
+			if(pair[0].getUnits()>=clickedField.getDefenceValue()+1)
+			{
+					attackingUnits=clickedField.getDefenceValue()+1;	
+					clickedField.setFieldOwner(1);
+					clickedField.setAmountOfUnits(attackingUnits);
+					pair[0].setUnits(pair[0].getUnits()-attackingUnits);
+			}
+			
+			else
+			{
+			int reinforcements = Dice.roll();
+			if (pair[0].getUnits()+reinforcements>=clickedField.getDefenceValue()+1)
+			{
+				attackingUnits=clickedField.getDefenceValue()+1;	
+				clickedField.setFieldOwner(1);
+				clickedField.setAmountOfUnits(attackingUnits);
+				pair[0].setUnits(pair[0].getUnits()-attackingUnits);
+			}
+			else{System.out.println("You cant conquer this");}
+		
+		}
+		}
+		
+		
+		else if(clickedField.isConquerable()==true && ownAnyAdjacencies==true) {
+			if(pair[0].getUnits()>=clickedField.getDefenceValue()+1)
+			{
+					attackingUnits=clickedField.getDefenceValue()+1;	
+					clickedField.setFieldOwner(1);
+					clickedField.setAmountOfUnits(attackingUnits);
+					pair[0].setUnits(pair[0].getUnits()-attackingUnits);
+			}
+			
+			else
+			{
+			int reinforcements = Dice.roll();
+			if (pair[0].getUnits()+reinforcements>=clickedField.getDefenceValue()+1)
+			{
+				attackingUnits=clickedField.getDefenceValue()+1;	
+				clickedField.setFieldOwner(1);
+				clickedField.setAmountOfUnits(attackingUnits);
+				pair[0].setUnits(pair[0].getUnits()-attackingUnits);
+			}
+			else{System.out.println("Du er bare en nederen mennesker..");}
+		
+		}
 				}
 			}
-		} else {
-			if (clickedField.isConquerable() == false) {
-
-			}
-
-		}
-
-	}
 
 	public void redeploy() {
 

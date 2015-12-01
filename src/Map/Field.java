@@ -40,7 +40,7 @@ public class Field {
 	 * Contains all the fields adjacent to this field
 	 * @see Field.isAdjacentTo();
 	 */
-	ArrayList<Field> adjacencies = new ArrayList<Field>();
+	public ArrayList<Field> adjacencies = new ArrayList<Field>();
 
 	// This array is supposed to be an array of units, we used strings as we don't have the 
 	// unit class yet
@@ -183,7 +183,7 @@ public class Field {
 		return fieldOwner;
 	}
 
-	void setFieldOwner(int fieldOwner) {
+	public void setFieldOwner(int fieldOwner) {
 		this.fieldOwner = fieldOwner;
 	}
 
