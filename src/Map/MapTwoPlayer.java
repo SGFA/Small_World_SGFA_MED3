@@ -6,7 +6,7 @@ public class MapTwoPlayer extends Map {
 	
 	public ArrayList<Field>allFields = new ArrayList<Field>();
 	
-	Field field1pt1 = new Field(TerrainType.WATER,allFields);
+	Field field1pt1 = new Field(TerrainType.WATER, allFields, new Field.Coordinate(3,4));
 	Field field1pt2 = new Field(TerrainType.FARMLAND,allFields);
 	Field field1pt3 = new Field(TerrainType.FOREST,allFields);	
 	Field field1pt4 = new Field(TerrainType.SWAMP,allFields);	
