@@ -36,34 +36,6 @@ public class Field {
 			setConquerable(false);
 		}
 	}
-	
-//	class Coordinate {
-//		
-//		private int x;
-//		private int y;
-//		
-//		public Coordinate(int x, int y) {
-//			this.setX(x);
-//			this.setY(y);
-//		}
-//
-//		int getY() {
-//			return y;
-//		}
-//
-//		private void setY(int y) {
-//			this.y = Math.abs(y);
-//		}
-//
-//		int getX() {
-//			return x;
-//		}
-//
-//		private void setX(int x) {
-//			this.x = Math.abs(x);
-//		}
-//			
-//	}
 
 	// The innate defence value of a field. Starts at 2, which is set in the constructor below. 
 	// The idea is that this value will always equal itself + the size of the arraylist of units, 
@@ -218,7 +190,7 @@ public class Field {
 		this.fieldOwner = fieldOwner;
 	}
 
-	int getPosX() {
+	public int getPosX() {
 		return posX;
 	}
 
@@ -226,7 +198,7 @@ public class Field {
 		this.posX = posX;
 	}
 
-	int getPosY() {
+	public int getPosY() {
 		return posY;
 	}
 

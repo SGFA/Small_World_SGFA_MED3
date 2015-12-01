@@ -9,6 +9,7 @@ import com.sun.org.apache.xpath.internal.operations.Bool;
 import Client.Dice;
 import Client.GameController;
 import Map.Field;
+import Map.Map;
 
 public class Player {
 
@@ -95,7 +96,7 @@ public class Player {
 
 	public void conquer(Field clickedField){
 		boolean hasFields =false;
-		for(Field otherField : GameController.currentBoard.allFields)
+		for(Field otherField : Map.fields)
 		{
 			if (otherField.getFieldOwner()==id) {
 				hasFields=true;
@@ -164,8 +165,8 @@ public class Player {
 	public void redeploy() {
 
 		// Run though all tiles on the board
-		for (Field field : GameController.currentBoard.allFields) {
-
+		for (Field field : Map.fields) {
+			
 			// If this player owns the field
 			if (field.getFieldOwner() == id) {
 

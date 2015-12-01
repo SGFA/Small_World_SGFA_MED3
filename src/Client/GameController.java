@@ -2,14 +2,12 @@ package Client;
 
 import java.util.ArrayList;
 
-import Map.MapTwoPlayer;
+import Map.MapHandler;
 
 public class GameController {
 
 	static Stack stack = new Stack();
 	static ArrayList<Player> players = new ArrayList<Player>();
-	static MapTwoPlayer currentBoard;
-
 	static Race race;
 	static Ability ability;
 
@@ -23,7 +21,11 @@ public class GameController {
 		
 		for (int i = 1; i <= amount; i++) {
 			players.add(new Player(i));	
-		}
+		}		
+	}
+	
+	public static void initlialize() {
+		MapHandler.initialize(players.size());
 	}
 
 	public static void setPair(int currentPlayer, int pos) {

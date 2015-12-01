@@ -10,6 +10,7 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.gui.MouseOverArea;
 import org.newdawn.slick.state.StateBasedGame;
 
+import Map.Map;
 import Menu.CheckPlayer;
 import Menu.Server_menu;
 
@@ -38,6 +39,7 @@ public class GameHandler extends StateBasedGame {
 	MouseOverArea moa;
 
 	public static void setup() {
+		
 		try {
 			AppGameContainer appgc;
 			appgc = new AppGameContainer(new GameHandler("SmallWorlds"));
@@ -45,10 +47,6 @@ public class GameHandler extends StateBasedGame {
 			appgc.start();
 		} catch (SlickException ex) {
 			Logger.getLogger(GameHandler.class.getName()).log(Level.SEVERE, null, ex);
-		}
+		}		
 	}
-
-
-
-
 }
