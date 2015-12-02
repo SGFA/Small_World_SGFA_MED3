@@ -5,24 +5,38 @@ import java.net.*;
 
 public class Server {
 
-	public final int PORT = 5000;
-	ServerSocket serverSocket;
-	Socket clientSocket;
-	Thread t1;
+    public volatile static boolean running;
+	static public final int PORT = 5000;
+	static ServerSocket serverSocket;
+	static Socket clientSocket;
+	static Thread t1;
 	
-	public void stop() {
-		
-	}
+	static public void stop (){
+        if (t1 == null) return;
 
+        running = false;
+        try{
+            if (serverSocket != null){
+            	serverSocket.close ();
+            }
+        }catch (IOException e){}
 
-	public void listen() {
+        t1 = null;
+    }
+
+	public static void listen() {
 
 		t1 = new Thread(new Runnable() {
 
 			public void run() {
-				while (true) {
+				
+				running = true; 
+				
+				while (running) {
 
 					try {
+						System.out.println("I'm running #2");
+
 						System.out.println(InetAddress.getLocalHost());
 					} catch (UnknownHostException e1) {
 						// TODO Auto-generated catch block
@@ -37,7 +51,6 @@ public class Server {
 
 					} catch (IOException e) {
 						System.out.println("Could not listen on port: " + PORT);
-						System.exit(-1);
 					}
 				}
 			}

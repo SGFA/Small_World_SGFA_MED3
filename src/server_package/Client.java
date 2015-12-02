@@ -6,20 +6,38 @@ import java.net.Socket;
 
 public class Client {
 
-	public final int PORT = 5000;
-	Socket socket;
+	static Thread t1;
+	
+	public final static int PORT = 5000;
+	public volatile static boolean running; 
+	static Socket socket;
 
-	public void connect(String IP_ADDRESS) {
+	
+	static public void stop (){
+        if (t1 == null) return;
 
-		Thread t1 = new Thread(new Runnable() {
+        running = false;
+        try{
+            if (socket != null){
+            	socket.close ();
+            }
+        }catch (IOException e){}
 
+        t1 = null;
+    }
+	
+	static public void connect(String IP_ADDRESS) {
+
+		socket = new Socket();
+
+		t1 = new Thread(new Runnable() {
+			
 			public void run() {
+				
 				while (true) {
-
-					socket = new Socket();
+					
 					try {
 						socket.connect(new InetSocketAddress(IP_ADDRESS, PORT), 1000);
-						
 						System.out.println("connected to host");
 						break;
 
@@ -27,13 +45,12 @@ public class Client {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
-
 				}
 			}
 		});
 
 		t1.start();
-
+		
 	}
 
 }
