@@ -82,7 +82,6 @@ public class Server_Screen extends BasicGameState {
 
 		if (moa_join.isMouseOver()) {
 			if (gc.getInput().isMousePressed(0)) {
-				System.out.println("join");
 
 				sbg.enterState(2);
 			}
@@ -90,7 +89,6 @@ public class Server_Screen extends BasicGameState {
 
 		if (moa_host.isMouseOver()) {
 			if (gc.getInput().isMousePressed(0)) {
-				System.out.println("host");
 				Lobby_Screen.isHost = true;
 				
 				GameController.addPlayers(1);

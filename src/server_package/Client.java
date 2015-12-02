@@ -3,6 +3,7 @@ package server_package;
 import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.net.Socket;
+import java.net.SocketTimeoutException;
 
 public class Client {
 
@@ -28,21 +29,34 @@ public class Client {
 	
 	static public void connect(String IP_ADDRESS) {
 
-		socket = new Socket();
 
 		t1 = new Thread(new Runnable() {
 			
 			public void run() {
 				
-				while (true) {
+				running = true;
+				System.out.println("Trying to connect");
+				
+				while (running) {
 					
 					try {
-						socket.connect(new InetSocketAddress(IP_ADDRESS, PORT), 1000);
-						System.out.println("connected to host");
+						
+						if (socket == null) {
+							socket = new Socket();
+						}
+						
+						if (socket != null) {
+														socket.connect(new InetSocketAddress("82.211.210.205", PORT), 5000);
+							System.out.println("Connected to host");
+
+						}
+						
 						break;
 
+					} catch (SocketTimeoutException e) {
+						e.printStackTrace();
+
 					} catch (IOException e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
 				}

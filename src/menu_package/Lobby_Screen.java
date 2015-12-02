@@ -39,9 +39,7 @@ public class Lobby_Screen extends BasicGameState {
 
 		back_btn_img = new Image("res/back.png");
 		moa_back = new MouseOverArea(gc, back_btn_img, 20, 400);
-		
-		System.out.println(isHost);
-		
+				
 	}
 
 	@Override
@@ -79,6 +77,7 @@ public class Lobby_Screen extends BasicGameState {
 			if (gc.getInput().isMousePressed(0)) {
 				sbg.enterState(1);
 				Server.stop();
+				return;
 			}
 		}
 		
