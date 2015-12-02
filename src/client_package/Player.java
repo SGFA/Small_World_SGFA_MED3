@@ -5,15 +5,21 @@ import java.lang.reflect.Method;
 import client_package.Dice;
 import map_package.Field;
 import map_package.Map;
-
-public class Player implements java.io.Serializable{
+/**
+ * Serializable class representing a player in the game.
+ * 
+ */
+public class Player implements java.io.Serializable {
 
 	int score;
 	Pair[] pair = new Pair[2];
 	boolean hasFields = false;
 	int attackingUnits = 0;
 	private int id;
-
+	/**
+	 * 
+	 * @param id the ID of the player; 1-5.
+	 */
 	public Player(int id) {
 		this.id = id;
 	}
@@ -32,7 +38,7 @@ public class Player implements java.io.Serializable{
 
 	// attack()
 
-	/*
+	/**
 	 * This method looks for the type of effect in the database and instantiates
 	 * the corresponding class as an object. The effect of that particular
 	 * object is then invoked with specified parameters also found in the
@@ -89,28 +95,28 @@ public class Player implements java.io.Serializable{
 		}
 	}
 
-	
-	
+
+
 	/**
 	 * Checks if this object has enough units to conquer clickedField. If true, clickedField gets assigned
 	 * the attackingUnits of units, and this object is assigned as clickedField's owner.
 	 * It also subtracts the attackingUnits units from this object.
 	 * @param clickedField - the target Field object.
 	 */
-		public void takeField(Field clickedField){
-			// If you have necessary amount of units you may take the field
-			if(pair[0].getUnits()>=clickedField.getDefenceValue()+1)
-			{
-					attackingUnits=clickedField.getDefenceValue()+1;	
-					clickedField.setFieldOwner(1);
-					clickedField.setAmountOfUnits(attackingUnits);
-					pair[0].setUnits(pair[0].getUnits()-attackingUnits);
-			}
-			
-			/*If you don't have the necessary amount of units you may use the die to
+	public void takeField(Field clickedField){
+		// If you have necessary amount of units you may take the field
+		if(pair[0].getUnits()>=clickedField.getDefenceValue()+1)
+		{
+			attackingUnits=clickedField.getDefenceValue()+1;	
+			clickedField.setFieldOwner(1);
+			clickedField.setAmountOfUnits(attackingUnits);
+			pair[0].setUnits(pair[0].getUnits()-attackingUnits);
+		}
+
+		/*If you don't have the necessary amount of units you may use the die to
 			add to your amount of units*/
-			else
-			{
+		else
+		{
 			int reinforcements = Dice.roll();
 			if (pair[0].getUnits()+reinforcements>=clickedField.getDefenceValue()+1)
 			{
@@ -120,53 +126,56 @@ public class Player implements java.io.Serializable{
 				pair[0].setUnits(pair[0].getUnits()-attackingUnits);
 			}
 			else{System.out.println("You dont have enough units to take this field");}
-		
-		}
-			
+
 		}
 
-		/**
-		 * Checks if this object owns any Field object matching its ID, if not the method can target any Field objects
-		 * which has the boolean isBorderPosition set to true.
-		 * If this object does own at least one Field object, the method checks which Field objects are adjacent to
-		 * the Field objects owned by this object and allows targeting of those Field objects. 
-		 * @param clickedField the targeted Field object.
-		 */
-		public void conquer(Field clickedField){
-			
-			//Check is the current player has owns any fields
-			boolean hasFields =false;
-			for(Field otherField : Map.fields)
-			{
-				if (otherField.getFieldOwner()==id) {
-					hasFields=true;
-				}
-			}
-			
-			//Checks what fields are adjacent to the fields the current player owns
-			boolean ownAnyAdjacencies = false;
-			for(Field otherField: clickedField.adjacencies){
-				if (otherField.getFieldOwner()==id) {
-					ownAnyAdjacencies=true;
-				}
-			}
-			
-			/*If the current player doesn't own any fields he must choose a
-			 * conquerable border position*/
-			if(hasFields==false && clickedField.isBorderPosition()==true 
-					&& clickedField.isConquerable()==true)
-			{		
-				takeField(clickedField);
-			}
-			
-			//if the current player does own fields he can choose any field adjacent to his or her field(s)
-			else if(clickedField.isConquerable()==true && ownAnyAdjacencies==true
-					&& hasFields==true)
-			{
-				takeField(clickedField);
+	}
+
+	/**
+	 * Checks if this object owns any Field object matching its ID, if not the method can target any Field objects
+	 * which has the boolean isBorderPosition set to true.
+	 * If this object does own at least one Field object, the method checks which Field objects are adjacent to
+	 * the Field objects owned by this object and allows targeting of those Field objects. 
+	 * @param clickedField the targeted Field object.
+	 */
+	public void conquer(Field clickedField){
+
+		//Check is the current player has owns any fields
+		boolean hasFields =false;
+		for(Field otherField : Map.fields)
+		{
+			if (otherField.getFieldOwner()==id) {
+				hasFields=true;
 			}
 		}
 
+		//Checks what fields are adjacent to the fields the current player owns
+		boolean ownAnyAdjacencies = false;
+		for(Field otherField: clickedField.adjacencies){
+			if (otherField.getFieldOwner()==id) {
+				ownAnyAdjacencies=true;
+			}
+		}
+
+		/*If the current player doesn't own any fields he must choose a
+		 * conquerable border position*/
+		if(hasFields==false && clickedField.isBorderPosition()==true 
+				&& clickedField.isConquerable()==true)
+		{		
+			takeField(clickedField);
+		}
+
+		//if the current player does own fields he can choose any field adjacent to his or her field(s)
+		else if(clickedField.isConquerable()==true && ownAnyAdjacencies==true
+				&& hasFields==true)
+		{
+			takeField(clickedField);
+		}
+	}
+
+	/**
+	 * Returns all units on the map except one per field to the player, setting up the redeployment phase.
+	 */
 	public void redeploy() {
 
 		// Run though all tiles on the board
@@ -186,10 +195,17 @@ public class Player implements java.io.Serializable{
 		}
 	}
 
+	/**
+	 * Gets the ID of the player.
+	 * @return the player's ID.
+	 */
 	public int getId() {
 		return id;
 	}
-	
+	/**
+	 * Set the ID of the player.
+	 * @param id an integer representing the player's ID.
+	 */
 	public void setId(int id) {
 		this.id = id;
 	}
