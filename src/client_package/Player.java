@@ -1,13 +1,8 @@
-package Client;
+package client_package;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.util.Iterator;
-
-import com.sun.org.apache.xpath.internal.operations.Bool;
-
-import Client.Dice;
-import Client.GameController;
+import client_package.Dice;
 import map_package.Field;
 import map_package.Map;
 

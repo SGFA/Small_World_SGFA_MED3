@@ -1,4 +1,4 @@
-package Menu;
+package menu_package;
 
 import org.lwjgl.input.Mouse;
 import org.newdawn.slick.GameContainer;

@@ -1,4 +1,4 @@
-package Client;
+package client_package;
 
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.SlickException;
@@ -29,8 +29,8 @@ public class Game extends BasicGameState {
 
 	@Override
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
-		GameController.addPlayer(2);
-		GameController.initlialize();
+		GameController.addPlayers(2);
+		GameController.initialize();
 	}
 
 	@Override

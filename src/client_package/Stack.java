@@ -1,4 +1,4 @@
-package Client;
+package client_package;
 
 import java.util.*;
 

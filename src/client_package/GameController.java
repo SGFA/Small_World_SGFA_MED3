@@ -1,7 +1,6 @@
-package Client;
+package client_package;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 
 import map_package.MapHandler;
 

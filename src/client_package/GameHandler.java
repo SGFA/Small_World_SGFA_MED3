@@ -1,18 +1,13 @@
-package Client;
+package client_package;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.GameContainer;
-import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
-import org.newdawn.slick.gui.MouseOverArea;
 import org.newdawn.slick.state.StateBasedGame;
-
-import Menu.CheckPlayer;
-import Menu.Welcome_Screen;
-import map_package.Map;
+import menu_package.Welcome_Screen;
 
 public class GameHandler extends StateBasedGame {
 

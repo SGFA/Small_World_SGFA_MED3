@@ -1,4 +1,4 @@
-package Client;
+package client_package;
 
 /**
  * The {@code Race} class specifies each race in the database.
