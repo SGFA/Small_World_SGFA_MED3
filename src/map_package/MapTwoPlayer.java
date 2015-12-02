@@ -2,7 +2,10 @@ package map_package;
 
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
-
+/**
+ * This Class instantiates all of the Field objects required for a two player map.
+ * 
+ */
 public class MapTwoPlayer extends Map {
 
 	Field field1pt1;
@@ -32,7 +35,12 @@ public class MapTwoPlayer extends Map {
 	Field field4pt6;
 	Field field4pt7;
 
-	public void initializeAssets() throws SlickException {
+	/**
+	 * Instantiates all fields for this map. 
+	 * @throws SlickException throws exception if the program is unable to localize
+	 * the images
+	 */
+	public void instantiateFields() throws SlickException {
 		field1pt1 = new Field(TerrainType.WATER, fields,    0, 56, new Image("assets/maps/two_players/field1pt1.png"));
 		field1pt2 = new Field(TerrainType.FARMLAND, fields, 206, 56,new Image("assets/maps/two_players/field1pt2.png"));
 		field1pt3 = new Field(TerrainType.FOREST, fields,   324, 56, new Image("assets/maps/two_players/field1pt3.png"));
@@ -65,9 +73,12 @@ public class MapTwoPlayer extends Map {
 		create();
 	}
 
+	/**
+	 * Creates the two player map
+	 */
 	public void create() {
 		try {
-			initializeAssets();
+			instantiateFields();
 		} catch (SlickException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -76,7 +87,10 @@ public class MapTwoPlayer extends Map {
 		setBorders();
 		setAttributes();
 	}
-
+/**
+ * Sets whether the Field objects contain any magic, mines or mountains which the Race/ Ability classes
+ * can interact with.
+ */
 	public void setAttributes() {
 		field1pt2.setContainsMagic(true);
 		field1pt3.setContainsMines(true);
@@ -90,7 +104,10 @@ public class MapTwoPlayer extends Map {
 		field4pt1.setContainsMagic(true);
 		field4pt3.setContainsMines(true);
 	}
-
+/**
+ * Sets which Field objects are placed on the borders of this object, this affects how the Player class
+ * can interact with them.
+ */
 	public void setBorders() {
 		field1pt1.setBorderPosition(true);
 		field1pt2.setBorderPosition(true);
@@ -109,6 +126,10 @@ public class MapTwoPlayer extends Map {
 		field4pt7.setBorderPosition(true);
 	}
 
+	/**
+	 * Makes a chart of which Field objects are adjacent to one and other, this affects how the Player
+	 * class can interact with them.
+	 */
 	public void defineAdjacencies() {
 		field1pt1.adjacencies.add(field1pt2);
 		field1pt1.adjacencies.add(field2pt1);

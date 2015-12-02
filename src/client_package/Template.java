@@ -1,5 +1,11 @@
 package client_package;
 
+/**
+ * Abstract class which serves as a template for classes containing information
+ * pertaining to the effects involved in a player's race / ability pair.
+ * @see Race
+ * @see Ability
+ */
 public abstract class Template {
 
 	String name;

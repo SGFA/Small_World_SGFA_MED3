@@ -10,6 +10,7 @@ public class Dice {
 	
 	/**
 	 * Method which rolls a 6-sized dice consisting of 0,0,0,1,2,3 and returns the result
+	 * @return dice result
 	 */
 	public static int roll() {
 		
