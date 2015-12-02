@@ -25,6 +25,8 @@ public class Server {
     }
 
 	public static void listen() {
+		
+		
 
 		t1 = new Thread(new Runnable() {
 
@@ -35,8 +37,6 @@ public class Server {
 				while (running) {
 
 					try {
-						System.out.println("I'm running #2");
-
 						System.out.println(InetAddress.getLocalHost());
 					} catch (UnknownHostException e1) {
 						// TODO Auto-generated catch block
@@ -51,6 +51,7 @@ public class Server {
 
 					} catch (IOException e) {
 						System.out.println("Could not listen on port: " + PORT);
+						break;
 					}
 				}
 			}

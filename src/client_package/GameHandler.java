@@ -38,11 +38,11 @@ public class GameHandler extends StateBasedGame {
 		//this.getState(SERVER_SCREEN).init(gc, this);
 		//this.getState(LOBBY_SCREEN).init(gc, this);
 		//this.getState(GAME).init(gc, this);
-		//this.enterState(WELCOME_SCREEN);
+		this.enterState(GAME);
 	}
 
 	public static void setup() {
-		
+
 		try {
 			AppGameContainer appgc;
 			appgc = new AppGameContainer(new GameHandler("SmallWorlds"));
@@ -51,8 +51,5 @@ public class GameHandler extends StateBasedGame {
 		} catch (SlickException ex) {
 			Logger.getLogger(GameHandler.class.getName()).log(Level.SEVERE, null, ex);
 		}		
-		
-		System.out.println("hello");
-
 	}
 }
