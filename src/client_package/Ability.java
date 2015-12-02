@@ -2,7 +2,7 @@ package client_package;
 
 /**
  * Serializable class which extends Template and contains variables pertaining to an ability.
- * 
+ * @see Template
  */
 public class Ability extends Template implements java.io.Serializable{
 

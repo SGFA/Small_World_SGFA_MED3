@@ -2,6 +2,7 @@ package client_package;
 
 /**
  * Serializable class which extends Template and contains variables pertaining to a race. 
+ * @see Template
  */
 
 public class Race extends Template implements java.io.Serializable{
