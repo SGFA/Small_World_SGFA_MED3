@@ -91,7 +91,12 @@ public class Player implements java.io.Serializable{
 
 	
 	
-	//Method called when conquering fields
+	/**
+	 * Checks if this object has enough units to conquer clickedField. If true, clickedField gets assigned
+	 * the attackingUnits of units, and this object is assigned as clickedField's owner.
+	 * It also subtracts the attackingUnits units from this object.
+	 * @param clickedField - the target Field object.
+	 */
 		public void takeField(Field clickedField){
 			// If you have necessary amount of units you may take the field
 			if(pair[0].getUnits()>=clickedField.getDefenceValue()+1)
@@ -120,7 +125,13 @@ public class Player implements java.io.Serializable{
 			
 		}
 
-		//Method used for Conquering fields in the first phase of each turn
+		/**
+		 * Checks if this object owns any Field object matching its ID, if not the method can target any Field objects
+		 * which has the boolean isBorderPosition set to true.
+		 * If this object does own at least one Field object, the method checks which Field objects are adjacent to
+		 * the Field objects owned by this object and allows targeting of those Field objects. 
+		 * @param clickedField the targeted Field object.
+		 */
 		public void conquer(Field clickedField){
 			
 			//Check is the current player has owns any fields
