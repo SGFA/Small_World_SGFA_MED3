@@ -45,13 +45,7 @@ public class GameHandler extends StateBasedGame {
 	}
 
 	public static void setup() {
-				
-		Server server = new Server();
-		server.listen();
-		
-		Client client = new Client();
-		client.connect("82.211.210.205");
-		
+								
 		try {
 			AppGameContainer appgc;
 			appgc = new AppGameContainer(new GameHandler("SmallWorlds"));

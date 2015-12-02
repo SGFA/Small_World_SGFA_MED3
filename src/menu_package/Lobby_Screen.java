@@ -12,6 +12,8 @@ import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
 import client_package.GameController;
+import server_package.Client;
+import server_package.Server;
 
 public class Lobby_Screen extends BasicGameState {
 	private Image background;
@@ -19,6 +21,11 @@ public class Lobby_Screen extends BasicGameState {
 	private Image player_2;
 	private Image back_btn_img;
 
+	static boolean isHost; 
+	private boolean listening;
+	private boolean connecting;
+
+	
 	public Lobby_Screen(int state) {
 
 	}
@@ -33,7 +40,7 @@ public class Lobby_Screen extends BasicGameState {
 		back_btn_img = new Image("res/back.png");
 		moa_back = new MouseOverArea(gc, back_btn_img, 20, 400);
 		
-
+		System.out.println(isHost);
 	}
 
 	@Override
@@ -66,19 +73,30 @@ public class Lobby_Screen extends BasicGameState {
 	public void update(GameContainer gc, StateBasedGame sbg, int arg2) throws SlickException {
 		// TODO Auto-generated method stub
 
-		// Launch game for host
-		// if (moa_launch.isMouseOver()) {
-		// if (Mouse.isButtonDown(0)) {
-		// System.out.println("launch");
-		// }
-		// }
 
-		// Back to the main screen
 		if (moa_back.isMouseOver()) {
 			if (gc.getInput().isMousePressed(0)) {
 				sbg.enterState(1);
+				GameController.removePlayer(1);	
+				
+				listening = false;
+				connecting = false;	
 			}
 		}
+		
+		if (isHost && listening == false) {
+			Server server = new Server();
+			server.listen();
+			listening = true; 
+
+			
+		} else if (isHost && connecting == false) {
+			Client client = new Client();
+			client.connect("127.0.0.1");
+			connecting = true;
+
+		}
+		
 	}
 
 	@Override

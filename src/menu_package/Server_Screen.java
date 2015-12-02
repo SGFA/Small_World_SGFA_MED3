@@ -9,6 +9,10 @@ import org.newdawn.slick.gui.MouseOverArea;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
+import client_package.GameController;
+import server_package.Client;
+import server_package.Server;
+
 public class Server_Screen extends BasicGameState {
 
 	private Image back_btn_img;
@@ -79,6 +83,7 @@ public class Server_Screen extends BasicGameState {
 		if (moa_join.isMouseOver()) {
 			if (gc.getInput().isMousePressed(0)) {
 				System.out.println("join");
+
 				sbg.enterState(2);
 			}
 		}
@@ -86,6 +91,9 @@ public class Server_Screen extends BasicGameState {
 		if (moa_host.isMouseOver()) {
 			if (gc.getInput().isMousePressed(0)) {
 				System.out.println("host");
+				Lobby_Screen.isHost = true;
+				
+				GameController.addPlayers(1);
 				sbg.enterState(2);
 			}
 		}

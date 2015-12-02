@@ -19,6 +19,7 @@ public class Client {
 					socket = new Socket();
 					try {
 						socket.connect(new InetSocketAddress(IP_ADDRESS, PORT), 1000);
+						
 						System.out.println("connected to host");
 						break;
 

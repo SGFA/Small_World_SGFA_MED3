@@ -8,10 +8,16 @@ public class Server {
 	public final int PORT = 5000;
 	ServerSocket serverSocket;
 	Socket clientSocket;
+	Thread t1;
+	
+	public void stop() {
+		
+	}
+
 
 	public void listen() {
 
-		Thread t1 = new Thread(new Runnable() {
+		t1 = new Thread(new Runnable() {
 
 			public void run() {
 				while (true) {
