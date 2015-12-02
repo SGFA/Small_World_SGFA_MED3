@@ -8,6 +8,8 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
 import menu_package.Welcome_Screen;
+import server_package.Client;
+import server_package.Server;
 
 public class GameHandler extends StateBasedGame {
 
@@ -32,6 +34,12 @@ public class GameHandler extends StateBasedGame {
 	}
 
 	public static void setup() {
+		
+		Server server = new Server();
+		server.listen();
+		
+		Client client = new Client();
+		client.connect("82.211.210.205");
 		
 		try {
 			AppGameContainer appgc;
