@@ -24,7 +24,6 @@ public class Lobby_Screen extends BasicGameState {
 	static boolean isHost; 
 	private boolean listening;
 	private boolean connecting;
-
 	
 	public Lobby_Screen(int state) {
 
@@ -41,6 +40,7 @@ public class Lobby_Screen extends BasicGameState {
 		moa_back = new MouseOverArea(gc, back_btn_img, 20, 400);
 		
 		System.out.println(isHost);
+		
 	}
 
 	@Override
@@ -77,26 +77,15 @@ public class Lobby_Screen extends BasicGameState {
 		if (moa_back.isMouseOver()) {
 			if (gc.getInput().isMousePressed(0)) {
 				sbg.enterState(1);
-				GameController.removePlayer(1);	
-				
-				listening = false;
-				connecting = false;	
+				Server.stop();
 			}
 		}
 		
-		if (isHost && listening == false) {
-			Server server = new Server();
-			server.listen();
-			listening = true; 
-
-			
-		} else if (isHost && connecting == false) {
-			Client client = new Client();
-			client.connect("127.0.0.1");
-			connecting = true;
-
+		if (isHost && Server.running == false) {
+			Server.listen();
+		} else if (!isHost && Client.running == false) {
+			Client.connect("127.0.0.1");
 		}
-		
 	}
 
 	@Override
