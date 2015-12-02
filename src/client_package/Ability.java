@@ -1,7 +1,24 @@
 package client_package;
 
+/**
+ * Serializable class which extends Template and contains variables pertaining to an ability.
+ * 
+ */
 public class Ability extends Template implements java.io.Serializable{
 
+	/**
+	 * 
+	 * @param name
+	 * 			the name of the ability
+	 * @param unitAmount
+	 * 			the amount of units the ability adds
+	 * @param effect
+	 * 			the effect of the ability
+	 * @param effectReq
+	 * 			the requirement for the effect to take place
+	 * @param condition
+	 * 			the condition which the effectReq must fulfill
+	 */
 	Ability(String name, int unitAmount, String effect, String effectReq, String condition) {
 		this.name = name;
 		this.unitAmount = unitAmount;
@@ -9,6 +26,7 @@ public class Ability extends Template implements java.io.Serializable{
 		this.effectReq = effectReq;
 		this.condition = condition; 
 		
+	
 	}
 
 	/**
