@@ -29,8 +29,9 @@ public class Game extends BasicGameState {
 
 	@Override
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
-		GameController.addPlayers(2);
-		GameController.initialize();
+		
+		System.out.println("Game.init() executed");
+
 	}
 
 	@Override

@@ -39,12 +39,13 @@ public class GameHandler extends StateBasedGame {
 		this.getState(LOBBY_SCREEN).init(gc, this);;
 		this.getState(GAME).init(gc, this);
 		
+		
 		this.enterState(WELCOME_SCREEN);
 
 	}
 
 	public static void setup() {
-		
+				
 		Server server = new Server();
 		server.listen();
 		

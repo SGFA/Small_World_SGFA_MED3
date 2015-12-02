@@ -7,7 +7,7 @@ import map_package.MapHandler;
 public class GameController {
 
 	static Stack stack = new Stack();
-	static ArrayList<Player> players = new ArrayList<Player>();
+	public static ArrayList<Player> players = new ArrayList<Player>();
 	static Race race;
 	static Ability ability;
 
@@ -43,7 +43,6 @@ public class GameController {
 				players.get(i).setId(i+1);
 			}
 		}
-		
 	}
 	
 	public static void initialize() {
@@ -65,9 +64,5 @@ public class GameController {
 			players.get(currentPlayer).pair[1] = players.get(currentPlayer).pair[0];
 			players.get(currentPlayer).pair[0] = null;
 		}
-	}
-
-	public static void debugPlayerAmount() {
-		System.out.println("Amount of players: " + players.size());
 	}
 }
