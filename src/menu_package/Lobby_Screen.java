@@ -34,6 +34,7 @@ public class Lobby_Screen extends BasicGameState {
 	@Override
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
 		// TODO Auto-generated method stub
+		
 		background = new Image("res/lobby background.png");
 
 		back_btn_img = new Image("res/back.png");
