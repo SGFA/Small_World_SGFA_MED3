@@ -8,7 +8,7 @@ import java.util.*;
  * session e.g. keeping track of the card stack.
  *
  */
-public class Stack {
+public class Stack implements java.io.Serializable{
 
 	// Databases for races and abilities
 	private ArrayList<Race> raceDb = new ArrayList<Race>();

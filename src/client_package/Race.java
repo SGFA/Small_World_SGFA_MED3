@@ -13,7 +13,7 @@ package client_package;
  *            the requirement for the effect to take place
  */
 
-public class Race extends Template {
+public class Race extends Template implements java.io.Serializable{
 
 	Race(String name, int unitAmount, String type, String effect, int amount, String effectReq, String condition) {
 		this.name = name;

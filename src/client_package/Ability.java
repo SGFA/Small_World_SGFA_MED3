@@ -1,6 +1,6 @@
 package client_package;
 
-public class Ability extends Template {
+public class Ability extends Template implements java.io.Serializable{
 
 	Ability(String name, int unitAmount, String effect, String effectReq, String condition) {
 		this.name = name;

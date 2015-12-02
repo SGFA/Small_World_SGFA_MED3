@@ -6,7 +6,7 @@ import client_package.Dice;
 import map_package.Field;
 import map_package.Map;
 
-public class Player {
+public class Player implements java.io.Serializable{
 
 	int score;
 	Pair[] pair = new Pair[2];
