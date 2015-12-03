@@ -4,6 +4,7 @@ package client_package;
 import java.io.*;
 import java.util.ArrayList;
 
+import server_package.Client;
 import server_package.Server;
 
 /**
@@ -34,10 +35,11 @@ public class SerializationHandler implements java.io.Serializable {
 		{
 			// Create file and object output streams
 			FileOutputStream fileOutputStream = new FileOutputStream("data.ser");
-			ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
+			ObjectOutputStream objectOutputStream = new ObjectOutputStream(Server.out);
 
 			// Write this SerializationHandler to the file output stream via the object output stream
 			objectOutputStream.writeObject(this);
+			
 
 			// Close output streams
 			objectOutputStream.close();
@@ -57,11 +59,12 @@ public class SerializationHandler implements java.io.Serializable {
 	 * class-level variables. 
 	 */
 	public void deserialize(){  
+				
 		try
 		{
 			// Create file and object input streams
 			FileInputStream fileInputStream = new FileInputStream("data.ser");
-			ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
+			ObjectInputStream objectInputStream = new ObjectInputStream(Client.in);
 
 			// Since we the object we serialize is the current SerializationHandler, we need
 			// this handler to read the input
@@ -91,13 +94,23 @@ public class SerializationHandler implements java.io.Serializable {
 		}
 
 		// Typecasts the variables in input to class-level variables
-		stack=(Stack)input.get(0);
-		players=(ArrayList<Player>) input.get(1);
-		race=(Race) input.get(2);
-		ability=(Ability) input.get(3);
+		stack = (Stack)input.get(0);
+		players = (ArrayList<Player>) input.get(1);
+		race = (Race) input.get(2);
+		ability = (Ability) input.get(3);
 
 		System.out.println("Successfully deserialized input to variables.");
-
+		System.out.println("Amount of player: " + players.size());
+		
 	}
+	
+	public void apply() {  
+		GameController.players = this.players;
+		GameController.stack = this.stack;
+		GameController.race = this.race;
+		GameController.ability = this.ability;
+		
+	}
+
 
 }

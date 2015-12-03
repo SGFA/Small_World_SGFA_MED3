@@ -11,6 +11,8 @@ import org.newdawn.slick.gui.MouseOverArea;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
+import com.sun.media.jfxmedia.events.PlayerStateEvent.PlayerState;
+
 import client_package.GameController;
 import server_package.Client;
 import server_package.Server;
@@ -46,14 +48,13 @@ public class Lobby_Screen extends BasicGameState {
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
 		// TODO Auto-generated method stub
 		background.draw(0, 0, 800, 600);
-		back_btn_img.draw(20, 400);
-		
+		back_btn_img.draw(20, 400);			
 		
 		for (int j = 0; j < 2; j++) {
 			for (int i = 0; i < 3; i++) {
-		Rectangle rect = new Rectangle(50 + 200 * i, 50 + 200 * j, 100, 100);
-		
-		
+						
+				Rectangle rect = new Rectangle(50 + 200 * i, 50 + 200 * j, 100, 100);
+				
 		if (i + j * 3 < GameController.players.size()) 
 			g.setColor(new Color(50, 255, 50));
 		else 
@@ -77,6 +78,7 @@ public class Lobby_Screen extends BasicGameState {
 			if (gc.getInput().isMousePressed(0)) {
 				sbg.enterState(1);
 				Server.stop();
+				Client.stop();
 				return;
 			}
 		}

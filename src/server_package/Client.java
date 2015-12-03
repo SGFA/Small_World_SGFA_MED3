@@ -1,9 +1,13 @@
 package server_package;
 
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.net.SocketTimeoutException;
+
+import client_package.GameController;
+import client_package.SerializationHandler;
 
 public class Client {
 
@@ -12,6 +16,9 @@ public class Client {
 	public final static int PORT = 5000;
 	public volatile static boolean running; 
 	static Socket socket;
+	public static ObjectInputStream in;
+	
+	public static final int playerID = 2; 
 
 	
 	static public void stop (){
@@ -22,11 +29,11 @@ public class Client {
             if (socket != null){
             	socket.close ();
             }
-        }catch (IOException e){}
+        } catch (IOException e){}
 
         t1 = null;
     }
-	
+		
 	static public void connect(String IP_ADDRESS) {
 
 
@@ -43,11 +50,17 @@ public class Client {
 						
 						if (socket == null) {
 							socket = new Socket();
+							
 						}
 						
 						if (socket != null) {
-														socket.connect(new InetSocketAddress("82.211.210.205", PORT), 5000);
+							socket.connect(new InetSocketAddress("82.211.210.205", PORT), 5000);
+							in = new ObjectInputStream(socket.getInputStream());
+
 							System.out.println("Connected to host");
+							GameController.serializationHandler.deserialize();
+							GameController.serializationHandler.apply();
+							
 
 						}
 						
