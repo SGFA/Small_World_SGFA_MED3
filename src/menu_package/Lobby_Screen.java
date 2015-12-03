@@ -1,26 +1,21 @@
 package menu_package;
 
-import org.lwjgl.input.Mouse;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.geom.Rectangle;
-import org.newdawn.slick.gui.MouseOverArea;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
-import com.sun.media.jfxmedia.events.PlayerStateEvent.PlayerState;
-
 import client_package.GameController;
+import map_package.MapHandler;
 import server_package.Client;
 import server_package.Server;
 
 public class Lobby_Screen extends BasicGameState {
 	private Image background;
-	private Image back_btn_img;
-	private Image launch_btn_img;
 
 	Button launch_btn;
 	Button back_btn;
@@ -79,7 +74,7 @@ public class Lobby_Screen extends BasicGameState {
 		if (launch_btn.isPressed() && isHost && GameController.players.size() > 1) {
 			System.out.println("PlayerAmount: " + GameController.players.size());
 			GameController.launched = true;
-			GameController.initialize();
+			MapHandler.initialize(GameController.players.size());
 			
 			GameController.serializationHandler.serialize(Server.out);
 			

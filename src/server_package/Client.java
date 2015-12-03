@@ -52,7 +52,7 @@ public class Client {
 						if (socket.isConnected() == false) {
 							socket.connect(new InetSocketAddress(IP_ADDRESS, PORT), 5000);
 							in = new ObjectInputStream(socket.getInputStream());
-							GameController.CURRENT_PLAYER_ID = 2;
+							GameController.CURRENT_ACTIVE_PLAYER = 2;
 							System.out.println("Connected to host");
 						} 
 						

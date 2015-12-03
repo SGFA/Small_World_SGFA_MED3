@@ -6,14 +6,46 @@ import map_package.MapHandler;
 
 public class GameController {
 
+	/**
+	 * The stack of race/ability pairs available for purchase.
+	 */
 	static Stack stack = new Stack();
+	
+	/**
+	 * An ArrayList of all the players in the game.
+	 */
 	public static ArrayList<Player> players = new ArrayList<Player>();
+	
+	/**
+	 * A serialization handler for general client-server communication via serialization of 
+	 * variables from this class.
+	 */
 	public static SerializationHandler serializationHandler = new SerializationHandler();
+	
+	/**
+	 * Represents a race associated with the client.
+	 */
 	static Race race;
+	
+	/**
+	 * Represents an ability associated with the client.
+	 */
 	static Ability ability;
-	public static int CURRENT_PLAYER_ID; 
+	
+	/**
+	 * Represents the player whose turn it is.
+	 */
+	public static int CURRENT_ACTIVE_PLAYER; 
+	
+	/**
+	 * Defines whether the game has begun or not, as determined by the host.
+	 */
 	public static boolean launched;
 
+	/**
+	 * Creates a stack by running the database methods associated with the Stack class.
+	 * @see Stack
+	 */
 	public static void createStack() {
 		stack.initDb();
 		stack.initialize();
@@ -37,38 +69,40 @@ public class GameController {
 	 */
 	public static void removePlayer(int id) {
 
-		players.remove(0);
+		players.remove(id-1);
 		
-//		for (Player player: players) {
-//			if (player.getId()==id) players.remove(player);
-//		}
-//		
-//		for (int i = 0; i < players.size(); i++) {
-//			if (players.get(i).getId()!=i+1) {
-//				players.get(i).setId(i+1);
-//			}
-//		}
+		for (int i = 0; i < players.size(); i++) {
+			if (players.get(i).getId()!=i+1) {
+				players.get(i).setId(i+1);
+			}
+		}
 	}
 	
-	public static void initialize() {
-		System.out.println("Initializing game");
-		MapHandler.initialize(players.size());
+	/**
+	 * Sets the active pair of a specified player to a pair from the stack and removes
+	 * it from the stack.
+	 * @param playerPos the Position of the player in the player array (0 = player 1, 1 = player 2, etc.)
+	 * @param stackPos the position of the pair in the stack.
+	 */
+	public static void setPair(int playerPos, int stackPos) {
+		players.get(playerPos).pair[0] = new Pair(stack.raceStack.get(stackPos), stack.abilityStack.get(stackPos));
+		stack.raceStack.remove(stackPos);
+		stack.abilityStack.remove(stackPos);
 	}
 
-	public static void setPair(int currentPlayer, int pos) {
-		players.get(currentPlayer).pair[0] = new Pair(stack.raceStack.get(pos), stack.abilityStack.get(pos));
-		stack.raceStack.remove(pos);
-		stack.abilityStack.remove(pos);
-	}
-
-	public static void decline(int currentPlayer) {
-		if (players.get(currentPlayer).pair[1] == null) {
-			players.get(currentPlayer).pair[1] = players.get(currentPlayer).pair[0];
-			players.get(currentPlayer).pair[0] = null;
+	/**
+	 * Puts a specified player into decline. This involves setting his active race to inactive,
+	 * and adding any currently inactive race back to the stack.
+	 * @param playerPos the position of the player in the GameController.players ArrayList.
+	 */
+	public static void decline(int playerPos) {
+		if (players.get(playerPos).pair[1] == null) {
+			players.get(playerPos).pair[1] = players.get(playerPos).pair[0];
+			players.get(playerPos).pair[0] = null;
 		} else {
-			stack.addPair(players.get(currentPlayer).pair[1].race, players.get(currentPlayer).pair[1].ability);
-			players.get(currentPlayer).pair[1] = players.get(currentPlayer).pair[0];
-			players.get(currentPlayer).pair[0] = null;
+			stack.addPair(players.get(playerPos).pair[1].race, players.get(playerPos).pair[1].ability);
+			players.get(playerPos).pair[1] = players.get(playerPos).pair[0];
+			players.get(playerPos).pair[0] = null;
 		}
 	}
 }
