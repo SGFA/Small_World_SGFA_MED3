@@ -61,7 +61,6 @@ public class Server {
 						GameController.serializationHandler.serialize(Server.out);
 
 						
-						break;
 
 					} catch (IOException e) {
 						System.out.println("Could not listen on port: " + PORT);

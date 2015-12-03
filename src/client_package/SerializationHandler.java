@@ -16,6 +16,8 @@ public class SerializationHandler implements java.io.Serializable {
 	ArrayList<Player> players = GameController.players;
 	Race race = GameController.race;
 	Ability ability = GameController.ability;
+	boolean launched = GameController.launched;
+
 
 	ArrayList<Object> input = new ArrayList<Object>();
 
@@ -29,7 +31,7 @@ public class SerializationHandler implements java.io.Serializable {
 		input.add(players);
 		input.add(race);
 		input.add(ability);
-
+		input.add(launched);
 
 		try
 		{
@@ -98,6 +100,8 @@ public class SerializationHandler implements java.io.Serializable {
 		players = (ArrayList<Player>) input.get(1);
 		race = (Race) input.get(2);
 		ability = (Ability) input.get(3);
+		launched = (boolean) input.get(4);
+
 
 		System.out.println("Successfully deserialized input to variables.");
 		System.out.println("Amount of player: " + players.size());
@@ -109,6 +113,8 @@ public class SerializationHandler implements java.io.Serializable {
 		GameController.stack = this.stack;
 		GameController.race = this.race;
 		GameController.ability = this.ability;
+		GameController.launched = this.launched;
+
 		
 	}
 

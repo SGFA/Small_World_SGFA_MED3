@@ -78,9 +78,10 @@ public class Lobby_Screen extends BasicGameState {
 
 		if (launch_btn.isPressed() && isHost && GameController.players.size() > 1) {
 			System.out.println("PlayerAmount: " + GameController.players.size());
+			GameController.launched = true;
 			GameController.initialize();
 			sbg.enterState(3);
-		}
+		} 
 
 		if (back_btn.isPressed()) {
 			sbg.enterState(1);
@@ -92,7 +93,6 @@ public class Lobby_Screen extends BasicGameState {
 				Server.stop();
 				Client.stop();
 				return;
-			
 		}
 
 		if (isHost && Server.running == false) {
