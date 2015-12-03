@@ -14,6 +14,7 @@ import org.newdawn.slick.state.StateBasedGame;
 import com.sun.media.jfxmedia.events.PlayerStateEvent.PlayerState;
 
 import client_package.GameController;
+import map_package.MapHandler;
 import server_package.Client;
 import server_package.Server;
 
@@ -79,7 +80,7 @@ public class Lobby_Screen extends BasicGameState {
 		if (launch_btn.isPressed() && isHost && GameController.players.size() > 1) {
 			System.out.println("PlayerAmount: " + GameController.players.size());
 			GameController.launched = true;
-			GameController.initialize();
+			MapHandler.initialize(GameController.players.size());
 			sbg.enterState(3);
 		} 
 

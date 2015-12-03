@@ -33,7 +33,7 @@ public class Server {
 	}
 
 	public static void listen() {
-		GameController.CURRENT_PLAYER_ID = 1;
+		GameController.CURRENT_ACTIVE_PLAYER = 1;
 
 		t1 = new Thread(new Runnable() {
 

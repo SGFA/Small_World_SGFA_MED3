@@ -51,7 +51,7 @@ public class Client {
 						
 						if (socket != null) {
 							socket.connect(new InetSocketAddress(IP_ADDRESS, PORT), 5000);
-							GameController.CURRENT_PLAYER_ID = 2;
+							GameController.CURRENT_ACTIVE_PLAYER = 2;
 
 							in = new ObjectInputStream(socket.getInputStream());
 
