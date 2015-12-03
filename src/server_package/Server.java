@@ -17,8 +17,6 @@ public class Server {
 	static Thread t1;
 	public static ObjectOutputStream out;
 
-	public final static int playerID = 1;
-
 	static public void stop() {
 
 		if (t1 == null)
@@ -36,6 +34,7 @@ public class Server {
 	}
 
 	public static void listen() {
+		GameController.CURRENT_PLAYER_ID = 1;
 
 		t1 = new Thread(new Runnable() {
 

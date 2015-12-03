@@ -11,6 +11,8 @@ public class GameController {
 	public static SerializationHandler serializationHandler = new SerializationHandler();
 	static Race race;
 	static Ability ability;
+	public static int CURRENT_PLAYER_ID; 
+
 
 	public static void createStack() {
 		stack.initDb();
