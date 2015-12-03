@@ -3,37 +3,46 @@ package server_package;
 import java.io.*;
 import java.net.*;
 
+import client_package.GameController;
+import client_package.SerializationHandler;
+
 public class Server {
 
-    public volatile static boolean running;
+	public volatile static boolean running;
 	static public final int PORT = 5000;
-	static ServerSocket serverSocket;
-	static Socket clientSocket;
-	static Thread t1;
 	
-	static public void stop (){
-        if (t1 == null) return;
+	static ServerSocket serverSocket;
+	public static Socket clientSocket;
+	
+	static Thread t1;
+	public static ObjectOutputStream out;
 
-        running = false;
-        try{
-            if (serverSocket != null){
-            	serverSocket.close ();
-            }
-        }catch (IOException e){}
+	public final static int playerID = 1;
 
-        t1 = null;
-    }
+	static public void stop() {
+
+		if (t1 == null)
+			return;
+		running = false;
+		try {
+			if (serverSocket != null) {
+				serverSocket.close();
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		t1 = null;
+	}
 
 	public static void listen() {
-		
-		
 
 		t1 = new Thread(new Runnable() {
 
 			public void run() {
-				
-				running = true; 
-				
+
+				running = true;
+
 				while (running) {
 
 					try {
@@ -46,7 +55,14 @@ public class Server {
 					try {
 						serverSocket = new ServerSocket(PORT);
 						clientSocket = serverSocket.accept();
+						out = new ObjectOutputStream(clientSocket.getOutputStream());
+						
 						System.out.println("client connected");
+						GameController.addPlayers(1);
+						
+						GameController.serializationHandler.serialize();
+
+						
 						break;
 
 					} catch (IOException e) {

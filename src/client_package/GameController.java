@@ -8,6 +8,7 @@ public class GameController {
 
 	static Stack stack = new Stack();
 	public static ArrayList<Player> players = new ArrayList<Player>();
+	public static SerializationHandler serializationHandler = new SerializationHandler();
 	static Race race;
 	static Ability ability;
 
@@ -33,16 +34,18 @@ public class GameController {
 	 * @param id the assigned number of the player you want to remove
 	 */
 	public static void removePlayer(int id) {
+
+		players.remove(0);
 		
-		for (Player player: players) {
-			if (player.getId()==id) players.remove(player);
-		}
-		
-		for (int i = 0; i < players.size(); i++) {
-			if (players.get(i).getId()!=i+1) {
-				players.get(i).setId(i+1);
-			}
-		}
+//		for (Player player: players) {
+//			if (player.getId()==id) players.remove(player);
+//		}
+//		
+//		for (int i = 0; i < players.size(); i++) {
+//			if (players.get(i).getId()!=i+1) {
+//				players.get(i).setId(i+1);
+//			}
+//		}
 	}
 	
 	public static void initialize() {

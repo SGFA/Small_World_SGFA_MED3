@@ -38,7 +38,6 @@ public class Game extends BasicGameState {
 
 	@Override
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
-		GameController.addPlayers(2);
 		GameController.initialize();
 		
 		for(int i = 0; i < Map.fields.size(); i++ ){

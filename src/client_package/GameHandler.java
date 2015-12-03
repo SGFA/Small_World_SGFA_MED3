@@ -38,11 +38,13 @@ public class GameHandler extends StateBasedGame {
 		//this.getState(SERVER_SCREEN).init(gc, this);
 		//this.getState(LOBBY_SCREEN).init(gc, this);
 		//this.getState(GAME).init(gc, this);
-		this.enterState(GAME);
+		//this.enterState(GAME);
 	}
 
 	public static void setup() {
 
+		GameController.createStack();
+		
 		try {
 			AppGameContainer appgc;
 			appgc = new AppGameContainer(new GameHandler("SmallWorlds"));
