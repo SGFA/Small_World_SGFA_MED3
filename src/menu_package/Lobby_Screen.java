@@ -19,13 +19,12 @@ import server_package.Server;
 
 public class Lobby_Screen extends BasicGameState {
 	private Image background;
-	private Image player_1;
-	private Image player_2;
 	private Image back_btn_img;
+	private Image launch_btn_img;
+	
+	Button launch_btn;
 
-	static boolean isHost; 
-	private boolean listening;
-	private boolean connecting;
+	static boolean isHost;
 	
 	public Lobby_Screen(int state) {
 
@@ -37,18 +36,24 @@ public class Lobby_Screen extends BasicGameState {
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
 		// TODO Auto-generated method stub
 		
+		launch_btn = new Button(gc, new Image("res/launch_btn.png"), 600, 500);
+		
 		background = new Image("res/lobby background.png");
 
 		back_btn_img = new Image("res/back.png");
 		moa_back = new MouseOverArea(gc, back_btn_img, 20, 400);
-				
+						
 	}
 
 	@Override
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
 		// TODO Auto-generated method stub
 		background.draw(0, 0, 800, 600);
-		back_btn_img.draw(20, 400);			
+		back_btn_img.draw(20, 400);		
+		
+		if (GameController.players.size() > 1 && isHost) {
+			launch_btn.display();
+		}
 		
 		for (int j = 0; j < 2; j++) {
 			for (int i = 0; i < 3; i++) {
@@ -73,6 +78,11 @@ public class Lobby_Screen extends BasicGameState {
 	public void update(GameContainer gc, StateBasedGame sbg, int arg2) throws SlickException {
 		// TODO Auto-generated method stub
 
+		if (launch_btn.isPressed() && isHost && GameController.players.size() > 1) {
+			System.out.println("PlayerAmount: " + GameController.players.size());
+			GameController.initialize();
+			sbg.enterState(3);
+			}
 
 		if (moa_back.isMouseOver()) {
 			if (gc.getInput().isMousePressed(0)) {
