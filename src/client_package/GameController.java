@@ -1,8 +1,11 @@
 package client_package;
 
 import java.util.ArrayList;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 import map_package.MapHandler;
+import server_package.Client;
+import server_package.Server;
 
 public class GameController {
 
@@ -38,9 +41,22 @@ public class GameController {
 	public static int CURRENT_ACTIVE_PLAYER; 
 	
 	/**
+	 * Represents the player whose turn it is.
+	 */
+	public static int PLAYER_ID; 
+
+	
+	/**
 	 * Defines whether the game has begun or not, as determined by the host.
 	 */
-	public static boolean launched;
+	public static AtomicBoolean launched = new AtomicBoolean(false);
+	
+	/**
+	 * Static reference to the client and server classes
+	 */
+	
+	public static Client client = new Client();
+	public static Server server = new Server();
 
 	/**
 	 * Creates a stack by running the database methods associated with the Stack class.
@@ -69,13 +85,13 @@ public class GameController {
 	 */
 	public static void removePlayer(int id) {
 
-		players.remove(id-1);
+		players.remove(PLAYER_ID - 1);
 		
-		for (int i = 0; i < players.size(); i++) {
-			if (players.get(i).getId()!=i+1) {
-				players.get(i).setId(i+1);
-			}
-		}
+//		for (int i = 0; i < players.size(); i++) {
+//			if (players.get(i).getId()!=i+1) {
+//				players.get(i).setId(i+1);
+//			}
+//		}
 	}
 	
 	/**
