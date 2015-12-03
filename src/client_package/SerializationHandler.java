@@ -3,6 +3,7 @@ package client_package;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 import server_package.Client;
 import server_package.Server;
@@ -16,7 +17,7 @@ public class SerializationHandler implements java.io.Serializable {
 	ArrayList<Player> players = GameController.players;
 	Race race = GameController.race;
 	Ability ability = GameController.ability;
-	boolean launched = GameController.launched;
+	AtomicBoolean launched = GameController.launched;
 
 
 	ArrayList<Object> input = new ArrayList<Object>();
@@ -24,28 +25,35 @@ public class SerializationHandler implements java.io.Serializable {
 	/**
 	 * Method which serializes the input ArrayList containing relevant variables from GameController.
 	 */
+	
 	public void serialize(ObjectOutputStream out) {
+		
+		System.out.println("serialize: " + this.launched);
+		System.out.println("gameController: " + GameController.launched);
 
+		
 		// Add variables to input array
 		input.add(stack);
 		input.add(players);
 		input.add(race);
 		input.add(ability);
 		input.add(launched);
-
+		
 		try
 		{
 			// Create file and object output streams
-			FileOutputStream fileOutputStream = new FileOutputStream("data.ser");
 			ObjectOutputStream objectOutputStream = new ObjectOutputStream(out);
 
 			// Write this SerializationHandler to the file output stream via the object output stream
 			objectOutputStream.writeObject(this);
 			
 
-			// Close output streams
-			objectOutputStream.close();
-			fileOutputStream.close();
+			// Flush output stream
+			objectOutputStream.flush();
+			
+//			// Close output streams
+//			objectOutputStream.close();
+//			fileOutputStream.close();
 
 			System.out.println("Successfully serialized input to 'data.ser'.");
 
@@ -65,7 +73,6 @@ public class SerializationHandler implements java.io.Serializable {
 		try
 		{
 			// Create file and object input streams
-			FileInputStream fileInputStream = new FileInputStream("data.ser");
 			ObjectInputStream objectInputStream = new ObjectInputStream(in);
 
 			// Since we the object we serialize is the current SerializationHandler, we need
@@ -78,10 +85,10 @@ public class SerializationHandler implements java.io.Serializable {
 			// Takes the input ArrayList from the deserialized object and stores it in 
 			// this input ArrayList
 			input = inputHandler.input;
-
+			
 			// Close streams
-			objectInputStream.close();
-			fileInputStream.close();
+//			objectInputStream.close();
+//			fileInputStream.close();
 		}
 		catch(IOException i)
 		{
@@ -100,11 +107,11 @@ public class SerializationHandler implements java.io.Serializable {
 		players = (ArrayList<Player>) input.get(1);
 		race = (Race) input.get(2);
 		ability = (Ability) input.get(3);
-		launched = (boolean) input.get(4);
+		launched = (AtomicBoolean) input.get(4);
 
 
 		System.out.println("Successfully deserialized input to variables.");
-		System.out.println("Amount of player: " + players.size());
+		System.out.println("launched: " + launched);
 		
 	}
 	
@@ -114,9 +121,5 @@ public class SerializationHandler implements java.io.Serializable {
 		GameController.race = this.race;
 		GameController.ability = this.ability;
 		GameController.launched = this.launched;
-
-		
 	}
-
-
 }

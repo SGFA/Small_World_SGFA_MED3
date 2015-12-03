@@ -14,6 +14,7 @@ import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
 import map_package.Map;
+import map_package.MapHandler;
 import menu_package.Toast;
 
 public class Game extends BasicGameState {
@@ -39,9 +40,10 @@ public class Game extends BasicGameState {
 	
 	@Override
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
-		// GameController.addPlayers(2);
+		//GameController.addPlayers(2);
 		// GameController.setPair(0, 0);
-		// GameController.initialize();
+		//MapHandler.initialize(GameController.players.size());
+		//GameController.launched = true;
 	}
 
 	@Override

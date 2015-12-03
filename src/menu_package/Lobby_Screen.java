@@ -11,8 +11,6 @@ import org.newdawn.slick.state.StateBasedGame;
 
 import client_package.GameController;
 import map_package.MapHandler;
-import server_package.Client;
-import server_package.Server;
 
 public class Lobby_Screen extends BasicGameState {
 	private Image background;
@@ -72,33 +70,39 @@ public class Lobby_Screen extends BasicGameState {
 		// TODO Auto-generated method stub
 
 		if (launch_btn.isPressed() && isHost && GameController.players.size() > 1) {
-			System.out.println("PlayerAmount: " + GameController.players.size());
-			GameController.launched = true;
-			MapHandler.initialize(GameController.players.size());
+
+			GameController.launched.set(true);
+			System.out.println("Launched boolean is: " + GameController.launched.get() + " on the server");
 			
-			GameController.serializationHandler.serialize(Server.out);
-			
+			MapHandler.initialize(GameController.players.size());			
 			sbg.enterState(3);
-		} else if (!isHost && GameController.launched) {
-			System.out.println("Launch client");
+			
+		} 
+					
+		if (!isHost) {
+			if (GameController.launched.get() == true) {
+				System.out.println("launch game");
+				MapHandler.initialize(GameController.players.size());			
+				sbg.enterState(3);
+			}
 		}
 
 		if (back_btn.isPressed()) {
 			sbg.enterState(1);
 			
 			if(isHost){
-				GameController.removePlayer(1);
+				GameController.removePlayer(0);
 				isHost = false;
 			}
-				Server.stop();
-				Client.stop();
+				GameController.server.stop();
+				//Client.stop();
 				return;
 		}
 
-		if (isHost && Server.running == false) {
-			Server.listen();
-		} else if (!isHost && Client.running == false) {
-			Client.connect("127.0.0.1");
+		if (isHost && !GameController.server.running) {
+			GameController.server.listen();
+		} else if (!isHost && !GameController.client.running) {
+			GameController.client.connect("127.0.0.1");
 		}
 	}
 

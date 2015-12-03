@@ -81,11 +81,13 @@ public class Server_Screen extends BasicGameState {
 
 		if (join_btn.isPressed()) {
 				sbg.enterState(2);
+				Lobby_Screen.isHost = false;
+
 		}
 
 		if (host_btn.isPressed()) {
+				GameController.server.init();
 				Lobby_Screen.isHost = true;
-				GameController.addPlayers(1);
 				sbg.enterState(2);
 			}
 		

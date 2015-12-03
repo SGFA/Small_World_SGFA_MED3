@@ -1,79 +1,54 @@
 package server_package;
 
-import java.io.IOException;
+import java.io.ObjectInput;
 import java.io.ObjectInputStream;
-import java.net.InetSocketAddress;
+import java.io.ObjectOutput;
+import java.io.ObjectOutputStream;
 import java.net.Socket;
-import java.net.SocketTimeoutException;
 
 import client_package.GameController;
 import client_package.SerializationHandler;
 
 public class Client {
 
-	static Thread t1;
-	
-	public final static int PORT = 5000;
-	public volatile static boolean running; 
-	static Socket socket;
-	public static ObjectInputStream in;
-	
-	static public void stop (){
-        if (t1 == null) return;
+	private static Socket socket;
 
-        running = false;
-        try{
-            if (socket != null){
-            	socket.close ();
-            	socket = null;
-            }
-        } catch (IOException e){}
+	private final int PORT = 5000;
+	public boolean running;
+	private String ip_address;
 
-        t1 = null;
-    }
-		
-	static public void connect(String IP_ADDRESS) {
+	public void connect(String ip_address) {
+		running = true;
 
-		t1 = new Thread(new Runnable() {
-			
-			public void run() {
-				
-				running = true;
-				System.out.println("Trying to connect");
-				
-				while (running) {
+		Thread t = new Thread(new ConnectionHandler());
+		t.start();
+	}
+
+	class ConnectionHandler implements Runnable {
+
+		@Override
+		public void run() {
+			try {
+				/**
+				 * Create a connection to the server socket on the host
+				 */
+				Socket socket = new Socket(ip_address, 5000);
+
+				ObjectInputStream in = new ObjectInputStream(socket.getInputStream());
+				ObjectOutputStream out = new ObjectOutputStream(socket.getOutputStream());
+
+				while (true) {
+					GameController.serializationHandler.deserialize(in);
+					GameController.serializationHandler.apply();
 					
-					try {
-						
-						if (socket == null) {
-							socket = new Socket();
-						}
-						
-						if (socket.isConnected() == false) {
-							socket.connect(new InetSocketAddress(IP_ADDRESS, PORT), 5000);
-							in = new ObjectInputStream(socket.getInputStream());
-							GameController.CURRENT_ACTIVE_PLAYER = 2;
-							System.out.println("Connected to host");
-						} 
-						
-						if (socket != null) {													
-							GameController.serializationHandler.deserialize(Client.in);
-							GameController.serializationHandler.apply();
-						}
-						
-
-					} catch (SocketTimeoutException e) {
-						e.printStackTrace();
-
-					} catch (IOException e) {
-						e.printStackTrace();
-					}
 				}
-			}
-		});
 
-		t1.start();
-		
+			} catch (Exception e) {
+				// TODO: handle exception
+			}
+
+		}
+
 	}
 
 }
