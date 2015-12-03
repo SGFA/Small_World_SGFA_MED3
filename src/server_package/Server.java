@@ -18,7 +18,6 @@ public class Server {
 	public static ObjectOutputStream out;
 
 	static public void stop() {
-
 		if (t1 == null)
 			return;
 		running = false;
