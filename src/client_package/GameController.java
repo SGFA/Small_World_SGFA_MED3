@@ -12,6 +12,7 @@ public class GameController {
 	static Race race;
 	static Ability ability;
 	public static int CURRENT_PLAYER_ID; 
+	public static boolean launched;
 
 
 	public static void createStack() {

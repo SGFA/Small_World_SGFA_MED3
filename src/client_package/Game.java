@@ -24,14 +24,11 @@ public class Game extends BasicGameState {
 
 	public Game(int state) {
 		// TODO Auto-generated constructor stub
-
 	}
 
 	@Override
 	public void render(GameContainer gc, StateBasedGame sbg, org.newdawn.slick.Graphics g) throws SlickException {
 		
-		// TODO Auto-generated method stub
-
 		for (int i = 0; i < Map.fields.size(); i++) {
 			Map.fields.get(i).image.draw(Map.fields.get(i).getPosX(), Map.fields.get(i).getPosY());
 		}
@@ -85,5 +82,4 @@ public class Game extends BasicGameState {
 		// TODO Auto-generated method stub
 		return 3;
 	}
-
 }
