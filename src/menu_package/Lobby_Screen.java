@@ -80,8 +80,13 @@ public class Lobby_Screen extends BasicGameState {
 			System.out.println("PlayerAmount: " + GameController.players.size());
 			GameController.launched = true;
 			GameController.initialize();
+			
+			GameController.serializationHandler.serialize(Server.out);
+			
 			sbg.enterState(3);
-		} 
+		} else if (!isHost && GameController.launched) {
+			System.out.println("Launch client");
+		}
 
 		if (back_btn.isPressed()) {
 			sbg.enterState(1);

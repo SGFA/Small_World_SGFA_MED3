@@ -49,18 +49,18 @@ public class Client {
 							socket = new Socket();
 						}
 						
-						if (socket != null) {
+						if (socket.isConnected() == false) {
 							socket.connect(new InetSocketAddress(IP_ADDRESS, PORT), 5000);
-							GameController.CURRENT_PLAYER_ID = 2;
-
 							in = new ObjectInputStream(socket.getInputStream());
-
+							GameController.CURRENT_PLAYER_ID = 2;
 							System.out.println("Connected to host");
+						} 
+						
+						if (socket != null) {													
 							GameController.serializationHandler.deserialize(Client.in);
 							GameController.serializationHandler.apply();
 						}
 						
-						break;
 
 					} catch (SocketTimeoutException e) {
 						e.printStackTrace();

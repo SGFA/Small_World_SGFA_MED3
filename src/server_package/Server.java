@@ -49,7 +49,7 @@ public class Server {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
-
+					
 					try {
 						serverSocket = new ServerSocket(PORT);
 						clientSocket = serverSocket.accept();

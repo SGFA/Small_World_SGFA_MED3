@@ -14,7 +14,6 @@ public class GameController {
 	public static int CURRENT_PLAYER_ID; 
 	public static boolean launched;
 
-
 	public static void createStack() {
 		stack.initDb();
 		stack.initialize();
