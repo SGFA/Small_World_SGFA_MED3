@@ -46,6 +46,13 @@ public class Game extends BasicGameState {
 	@Override
 	public void update(GameContainer gc, StateBasedGame sbg, int arg2) throws SlickException {
 
+		updateFields(gc);
+	
+	}
+	
+	public void updateFields(GameContainer gc) {
+		
+		// If the MouseOverArea ArrayList is empty then it should be populated. 
 		if (moa.isEmpty()) {
 			for (int i = 0; i < Map.fields.size(); i++) {
 				moa.add(new MouseOverArea(gc, Map.fields.get(i).image, Map.fields.get(i).getPosX(),
