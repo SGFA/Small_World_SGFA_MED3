@@ -104,6 +104,9 @@ public class Player implements java.io.Serializable {
 	 * @param clickedField - the target Field object.
 	 */
 	public void takeField(Field clickedField){
+		
+		System.out.println("Field taken");
+		
 		// If you have necessary amount of units you may take the field
 		if(pair[0].getUnits()>=clickedField.getDefenceValue()+1)
 		{
@@ -138,7 +141,7 @@ public class Player implements java.io.Serializable {
 	 * the Field objects owned by this object and allows targeting of those Field objects. 
 	 * @param clickedField the targeted Field object.
 	 */
-	public void conquer(Field clickedField){
+	public void conquer(Field clickedField) {
 
 		//Check is the current player has owns any fields
 		boolean hasFields =false;
