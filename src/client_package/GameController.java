@@ -51,6 +51,7 @@ public class GameController {
 	}
 	
 	public static void initialize() {
+		System.out.println("Initializing game");
 		MapHandler.initialize(players.size());
 	}
 

@@ -22,27 +22,26 @@ public class Server_Screen extends BasicGameState {
 	boolean playerNumber = false;
 
 	private Image background_img;
+	
+	Button join_btn;
+	Button host_btn;
+	Button back_btn;
 
 	public Server_Screen(int state) {
 
 	}
 
-	MouseOverArea moa_join, moa_host, moa_back;
 
 	@Override
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
 		// TODO Auto-generated method stub
 		background_img = new Image("res/small world.png");
 
-		join_btn_img = new Image("res/join_btn_img.png");
-		moa_join = new MouseOverArea(gc, join_btn_img, 600, 200);
+		join_btn = new Button(gc,new Image("res/join_btn_img.png"), 600, 200);
 
-		host_btn_img = new Image("res/host server.png");
-		moa_host = new MouseOverArea(gc, host_btn_img, 600, 100);
+		host_btn = new Button(gc,new Image("res/host server.png"), 600, 100);
 
-		back_btn_img = new Image("res/back.png");
-		moa_back = new MouseOverArea(gc, join_btn_img, 20, 400);
-
+		back_btn = new Button(gc, new Image("res/back.png"), 20, 500);
 	}
 
 	@Override
@@ -50,11 +49,11 @@ public class Server_Screen extends BasicGameState {
 		// TODO Auto-generated method stub
 		background_img.draw(0, 0, 800, 600);
 
-		join_btn_img.draw(600, 200);
+		join_btn.display();
 
-		host_btn_img.draw(600, 100);
+		host_btn.display();
 
-		back_btn_img.draw(20, 400);
+		back_btn.display();
 
 		g.drawString("The list of avilable server : " + serverList, 20, 100);
 
@@ -80,29 +79,23 @@ public class Server_Screen extends BasicGameState {
 		// if two players has been connected to the system then press the start
 		// key the game will start.
 
-		if (moa_join.isMouseOver()) {
-			if (gc.getInput().isMousePressed(0)) {
-
+		if (join_btn.isPressed()) {
 				sbg.enterState(2);
-			}
 		}
 
-		if (moa_host.isMouseOver()) {
-			if (gc.getInput().isMousePressed(0)) {
+		if (host_btn.isPressed()) {
 				Lobby_Screen.isHost = true;
-				
 				GameController.addPlayers(1);
 				sbg.enterState(2);
 			}
-		}
+		
 
-		if (moa_back.isMouseOver()) {
-			if (gc.getInput().isMousePressed(0)) {
+		if (back_btn.isPressed()) {
 				sbg.enterState(0);
 			}
 		}
 		
-	}
+	
 
 	@Override
 	public int getID() {

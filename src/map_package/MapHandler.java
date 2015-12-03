@@ -6,12 +6,11 @@ public class MapHandler {
 	
 	public static void initialize (int playerCount) {
 
-		
-		
 		switch (playerCount) {
 		case 1:
 			break;
 		case 2:
+			System.out.println("Creating two-player map");
 			map = new MapTwoPlayer();
 			
 			break;

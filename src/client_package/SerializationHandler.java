@@ -22,7 +22,7 @@ public class SerializationHandler implements java.io.Serializable {
 	/**
 	 * Method which serializes the input ArrayList containing relevant variables from GameController.
 	 */
-	public void serialize() {
+	public void serialize(ObjectOutputStream out) {
 
 		// Add variables to input array
 		input.add(stack);
@@ -35,7 +35,7 @@ public class SerializationHandler implements java.io.Serializable {
 		{
 			// Create file and object output streams
 			FileOutputStream fileOutputStream = new FileOutputStream("data.ser");
-			ObjectOutputStream objectOutputStream = new ObjectOutputStream(Server.out);
+			ObjectOutputStream objectOutputStream = new ObjectOutputStream(out);
 
 			// Write this SerializationHandler to the file output stream via the object output stream
 			objectOutputStream.writeObject(this);
@@ -58,13 +58,13 @@ public class SerializationHandler implements java.io.Serializable {
 	 * Method which deserializes object and stores its input in relevant 
 	 * class-level variables. 
 	 */
-	public void deserialize(){  
+	public void deserialize(ObjectInputStream in){  
 				
 		try
 		{
 			// Create file and object input streams
 			FileInputStream fileInputStream = new FileInputStream("data.ser");
-			ObjectInputStream objectInputStream = new ObjectInputStream(Client.in);
+			ObjectInputStream objectInputStream = new ObjectInputStream(in);
 
 			// Since we the object we serialize is the current SerializationHandler, we need
 			// this handler to read the input

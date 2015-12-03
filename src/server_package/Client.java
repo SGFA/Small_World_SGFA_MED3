@@ -25,6 +25,7 @@ public class Client {
         try{
             if (socket != null){
             	socket.close ();
+            	socket = null;
             }
         } catch (IOException e){}
 
@@ -46,20 +47,17 @@ public class Client {
 						
 						if (socket == null) {
 							socket = new Socket();
-							
 						}
 						
 						if (socket != null) {
-							socket.connect(new InetSocketAddress("82.211.210.205", PORT), 5000);
+							socket.connect(new InetSocketAddress(IP_ADDRESS, PORT), 5000);
 							GameController.CURRENT_PLAYER_ID = 2;
 
 							in = new ObjectInputStream(socket.getInputStream());
 
 							System.out.println("Connected to host");
-							GameController.serializationHandler.deserialize();
+							GameController.serializationHandler.deserialize(Client.in);
 							GameController.serializationHandler.apply();
-							
-
 						}
 						
 						break;
