@@ -41,7 +41,7 @@ public class Server_Screen extends BasicGameState {
 
 		host_btn = new Button(gc,new Image("res/host server.png"), 600, 100);
 
-		back_btn = new Button(gc, new Image("res/back.png"), 20, 20);
+		back_btn = new Button(gc, new Image("res/back.png"), 20, 500);
 	}
 
 	@Override

@@ -58,7 +58,7 @@ public class Server {
 						System.out.println("client connected");
 						GameController.addPlayers(1);
 						
-						GameController.serializationHandler.serialize();
+						GameController.serializationHandler.serialize(Server.out);
 
 						
 						break;

@@ -36,7 +36,8 @@ public class Lobby_Screen extends BasicGameState {
 		// TODO Auto-generated method stub
 
 		launch_btn = new Button(gc, new Image("res/launch_btn.png"), 600, 500);
-		back_btn = new Button(gc, new Image("res/back.png"), 20, 450);
+		
+		back_btn = new Button(gc, new Image("res/back.png"), 20, 500);
 
 		background = new Image("res/lobby background.png");
 

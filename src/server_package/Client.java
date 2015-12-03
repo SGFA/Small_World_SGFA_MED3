@@ -25,6 +25,7 @@ public class Client {
         try{
             if (socket != null){
             	socket.close ();
+            	socket = null;
             }
         } catch (IOException e){}
 
@@ -46,7 +47,6 @@ public class Client {
 						
 						if (socket == null) {
 							socket = new Socket();
-							
 						}
 						
 						if (socket != null) {
@@ -56,10 +56,8 @@ public class Client {
 							in = new ObjectInputStream(socket.getInputStream());
 
 							System.out.println("Connected to host");
-							GameController.serializationHandler.deserialize();
+							GameController.serializationHandler.deserialize(Client.in);
 							GameController.serializationHandler.apply();
-							
-
 						}
 						
 						break;
