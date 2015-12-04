@@ -16,6 +16,7 @@ import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
 import map_package.Map;
+import map_package.MapAttributes;
 import menu_package.Button;
 import menu_package.Toast;
 
@@ -25,8 +26,25 @@ public class Game extends BasicGameState {
 	Button decline_btn;
 	Button end_turn_btn;
 
+	MapAttributes mountainsField1pt4;
+	MapAttributes mountainsField2pt1;
+	MapAttributes mountainsField3pt4;
+
+	MapAttributes magicField1pt2;
+	MapAttributes magicField2pt6;
+	MapAttributes magicField3pt3;
+	MapAttributes magicField4pt1;
+	
+	MapAttributes miningField1pt3;
+	MapAttributes miningField2pt1;
+	MapAttributes miningField3pt5;
+	MapAttributes miningField4pt3;
+
+
+	
 	TrueTypeFont font;
 
+	
 	GameController gameController = new GameController();
 
 	public ArrayList<MouseOverArea> moa = new ArrayList<MouseOverArea>();
@@ -43,13 +61,28 @@ public class Game extends BasicGameState {
 			Map.fields.get(i).image.draw(Map.fields.get(i).getPosX(), Map.fields.get(i).getPosY());
 		}
 
-		font.drawString(100, 20, "YOUR SCORE:", Color.yellow);
+		font.drawString(100, 20, "YOUR SCORE: " , Color.yellow);
 
 		Toast.draw(g);
 
 		launchbtn.display();
 		decline_btn.display();
 		end_turn_btn.display();
+		
+		mountainsField1pt4.display();
+		mountainsField2pt1.display();
+		mountainsField3pt4.display();
+		
+		magicField1pt2.display();
+		magicField2pt6.display();
+		magicField3pt3.display();
+		magicField4pt1.display();
+		
+		miningField1pt3.display();
+		miningField2pt1.display();
+		miningField3pt5.display();
+		miningField4pt3.display();
+
 	}
 
 	@Override
@@ -62,13 +95,28 @@ public class Game extends BasicGameState {
 		// GameController.setPair(0, 0);
 
 		// GameController.initialize()
-
+		
+	
 		Font awtFont = new Font("Times New Roman", Font.BOLD, 24);
 		font = new TrueTypeFont(awtFont, false);
 
 		launchbtn = new Button(gc, new Image("res/combo_shop.png"), 650, 520);
 		decline_btn = new Button(gc, new Image("res/decline.png"), 450, 30);
 		end_turn_btn = new Button(gc, new Image("res/end.png"), 650, 30);
+		
+		mountainsField1pt4 = new MapAttributes(gc, new Image("assets/mountain.png"), 480, 65);
+		mountainsField2pt1 = new MapAttributes(gc, new Image("assets/mountain.png"), 155, 150);
+		mountainsField3pt4 = new MapAttributes(gc, new Image("assets/mountain.png"), 585, 235);
+		
+		magicField1pt2 = new MapAttributes(gc, new Image("assets/magic.png"), 240, 70);
+		magicField2pt6 = new MapAttributes(gc, new Image("assets/magic.png"), 739, 135);
+		magicField3pt3 = new MapAttributes(gc, new Image("assets/magic.png"), 450, 320);
+		magicField4pt1 = new MapAttributes(gc, new Image("assets/magic.png"), 100, 354);
+		
+		miningField1pt3 = new MapAttributes(gc, new Image("assets/mining.png"), 350, 66);
+		miningField2pt1 = new MapAttributes(gc, new Image("assets/mining.png"), 50, 181);
+		miningField3pt5 = new MapAttributes(gc, new Image("assets/mining.png"), 725, 225);
+		miningField4pt3 = new MapAttributes(gc, new Image("assets/mining.png"), 350, 430);
 
 		// MapHandler.initialize(GameController.players.size());
 		// GameController.launched = true;
