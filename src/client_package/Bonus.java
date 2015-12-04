@@ -12,7 +12,7 @@ public class Bonus extends Template {
 	
 	public void addPoints(Player player, int num){
 		
-		player.score += num;
+		player.setScore(player.getScore() + num);
 		
 	}
 	

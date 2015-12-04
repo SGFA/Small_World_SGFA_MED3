@@ -244,11 +244,11 @@ public class Player implements java.io.Serializable {
 		this.id = id;
 	}
 
-	private int getScore() {
+	public int getScore() {
 		return score;
 	}
 
-	private void setScore(int score) {
+	public void setScore(int score) {
 		this.score = score;
 	}
 }
