@@ -110,6 +110,8 @@ public class Player implements java.io.Serializable {
 	 */
 	public void takeField(Field clickedField) {
 
+		System.out.println("try");
+		
 		if (pair[0] != null) {
 
 			System.out.println("Field taken");

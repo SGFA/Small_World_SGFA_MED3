@@ -128,6 +128,8 @@ public class Game extends BasicGameState {
 	@Override
 	public void update(GameContainer gc, StateBasedGame sbg, int arg2) throws SlickException {
 
+		updateFields(gc);
+		
 		if (launchbtn.isPressed()) {
 			popup = new Popup();
 			popup.display();
