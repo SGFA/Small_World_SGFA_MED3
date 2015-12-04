@@ -155,8 +155,8 @@ public class Popup extends JDialog implements MouseListener {
 			for (int i = 0; i < 2; i++) {
 				if (e.getX() > i * 600 / 2 && e.getX() < i * 600 / 2 + 300 && e.getY() > j * 600 / shopSize
 						&& e.getY() < j * 600 / shopSize + 600 / shopSize) {
-					if (GameController.PLAYER_ID == GameController.CURRENT_ACTIVE_PLAYER) {
-						GameController.setPair(GameController.CURRENT_ACTIVE_PLAYER - 1, j);
+					if (GameController.PLAYER_ID == GameController.CURRENT_ACTIVE_PLAYER.get()) {
+						GameController.setPair(GameController.CURRENT_ACTIVE_PLAYER.get() - 1, j);
 						display();
 					}
 				}

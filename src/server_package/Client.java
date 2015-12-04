@@ -49,7 +49,7 @@ public class Client {
 					
 					while(GameController.launched.get()) {
 																	
-						if (GameController.PLAYER_ID == GameController.CURRENT_ACTIVE_PLAYER) {
+						if (GameController.PLAYER_ID == GameController.CURRENT_ACTIVE_PLAYER.get()) {
 							GameController.serializationHandler.deserialize(in);
 							GameController.serializationHandler.apply();
 							

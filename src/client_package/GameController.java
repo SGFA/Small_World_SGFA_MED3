@@ -2,6 +2,7 @@ package client_package;
 
 import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import map_package.MapHandler;
 import menu_package.Toast;
@@ -39,7 +40,7 @@ public class GameController {
 	/**
 	 * Represents the player whose turn it is.
 	 */
-	public static int CURRENT_ACTIVE_PLAYER = 1;
+	public static AtomicInteger CURRENT_ACTIVE_PLAYER = new AtomicInteger(1);
 
 	/**
 	 * Represents the player whose turn it is.
@@ -105,10 +106,10 @@ public class GameController {
 
 		Toast.set(10, 550, "Your turn has ended.", 3000);
 
-		if (CURRENT_ACTIVE_PLAYER + 1 <= players.size())
-			CURRENT_ACTIVE_PLAYER++;
+		if (CURRENT_ACTIVE_PLAYER.get() + 1 <= players.size())
+			CURRENT_ACTIVE_PLAYER.incrementAndGet();
 		else
-			CURRENT_ACTIVE_PLAYER = 1;
+			CURRENT_ACTIVE_PLAYER.set(1);
 	}
 
 	/**
@@ -127,7 +128,7 @@ public class GameController {
 		// 1).pair[0].race);
 		// System.out.println("Pair is put in playerPos: " + playerPos);
 
-		if (PLAYER_ID == CURRENT_ACTIVE_PLAYER && players.get(CURRENT_ACTIVE_PLAYER - 1).pair[0] == null)
+		if (PLAYER_ID == CURRENT_ACTIVE_PLAYER.get() && players.get(CURRENT_ACTIVE_PLAYER.get() - 1).pair[0] == null)
 			System.out.println("set pair");
 		Toast.set(10, 550, "Pair assigned from stack.", 3000);
 

@@ -160,7 +160,7 @@ public class Player implements java.io.Serializable {
 		// Check is the current player has owns any fields
 		boolean hasFields = false;
 		for (Field otherField : Map.fields) {
-			if (otherField.getFieldOwner() == GameController.CURRENT_ACTIVE_PLAYER) {
+			if (otherField.getFieldOwner() == GameController.CURRENT_ACTIVE_PLAYER.get()) {
 				hasFields = true;
 			}
 		}
@@ -169,7 +169,7 @@ public class Player implements java.io.Serializable {
 		// owns
 		boolean ownAnyAdjacencies = false;
 		for (Field otherField : clickedField.adjacencies) {
-			if (otherField.getFieldOwner() == GameController.CURRENT_ACTIVE_PLAYER) {
+			if (otherField.getFieldOwner() == GameController.CURRENT_ACTIVE_PLAYER.get()) {
 				ownAnyAdjacencies = true;
 			}
 		}
@@ -220,7 +220,7 @@ public class Player implements java.io.Serializable {
 	public void scorePoint(){
 		
 		for(Field ownedFields: Map.fields){
-			if(ownedFields.getFieldOwner()==GameController.CURRENT_ACTIVE_PLAYER)
+			if(ownedFields.getFieldOwner() == GameController.CURRENT_ACTIVE_PLAYER.get())
 			{
 				setScore(getScore() + 1);
 			}

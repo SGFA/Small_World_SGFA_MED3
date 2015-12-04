@@ -4,6 +4,7 @@ package client_package;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import server_package.Client;
 import server_package.Server;
@@ -18,7 +19,7 @@ public class SerializationHandler implements java.io.Serializable {
 	Race race = GameController.race;
 	Ability ability = GameController.ability;
 	AtomicBoolean launched = GameController.launched;
-	int CURRENT_ACTIVE_PLAYER = GameController.CURRENT_ACTIVE_PLAYER;
+	AtomicInteger CURRENT_ACTIVE_PLAYER = GameController.CURRENT_ACTIVE_PLAYER;
 
 	ArrayList<Object> input = new ArrayList<Object>();
 
@@ -27,6 +28,9 @@ public class SerializationHandler implements java.io.Serializable {
 	 */
 	
 	public void serialize(ObjectOutputStream out) {
+		
+		CURRENT_ACTIVE_PLAYER = GameController.CURRENT_ACTIVE_PLAYER;
+
 		
 		// Add variables to input array
 		input.add(stack);
@@ -103,7 +107,7 @@ public class SerializationHandler implements java.io.Serializable {
 		race = (Race) input.get(2);
 		ability = (Ability) input.get(3);
 		launched = (AtomicBoolean) input.get(4);
-		CURRENT_ACTIVE_PLAYER = (int) input.get(5);
+		CURRENT_ACTIVE_PLAYER = (AtomicInteger) input.get(5);
 		
 	}
 	

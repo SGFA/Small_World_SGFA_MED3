@@ -96,7 +96,7 @@ public class Server {
 				GameController.addPlayers(1);
 				
 				ObjectOutputStream out = new ObjectOutputStream(socket.getOutputStream());
-				//ObjectInputStream in = new ObjectInputStream(socket.getInputStream());
+				ObjectInputStream in = new ObjectInputStream(socket.getInputStream());
 
 				serializationHandler.serialize(out);
 
@@ -106,7 +106,7 @@ public class Server {
 				
 				while (GameController.launched.get()) {
 					
-					game(out);
+					game(in, out);
 				}		
 				
 			} catch (Exception e) {
@@ -114,9 +114,9 @@ public class Server {
 			}
 		}
 		
-			public void game(ObjectOutputStream out) {
+			public void game(ObjectInputStream in, ObjectOutputStream out) {
 				
-			if (GameController.PLAYER_ID == GameController.CURRENT_ACTIVE_PLAYER) {
+			if (GameController.PLAYER_ID == GameController.CURRENT_ACTIVE_PLAYER.get()) {
 
 				//System.out.println("I'm active");
 				serializationHandler.serialize(out);
@@ -130,6 +130,7 @@ public class Server {
 			} else {
 				//GameController.serializationHandler.deserialize(in);
 				//GameController.serializationHandler.apply();
+				serializationHandler.serialize(out);
 			}
 
 		}

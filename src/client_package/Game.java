@@ -142,10 +142,10 @@ public class Game extends BasicGameState {
 		}
 		
 		if (decline_btn.isPressed()) {
-			gameController.decline(gameController.CURRENT_ACTIVE_PLAYER);
+			gameController.decline(gameController.CURRENT_ACTIVE_PLAYER.get());
 		}
 
-		if (end_turn_btn.isPressed() && GameController.PLAYER_ID == GameController.CURRENT_ACTIVE_PLAYER) {
+		if (end_turn_btn.isPressed() && GameController.PLAYER_ID == GameController.CURRENT_ACTIVE_PLAYER.get()) {
 			GameController.endTurn();
 		}
 		
