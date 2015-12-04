@@ -25,11 +25,11 @@ import org.newdawn.slick.Game;
 import javafx.scene.input.MouseButton;
 import javafx.stage.PopupWindow;
 
-public class Popup extends JDialog implements MouseListener {
+public class StackShop extends JDialog implements MouseListener {
 
 	private int shopSize = arrayDeterminator();
 
-	public Popup() {
+	public StackShop() {
 
 		this.addMouseListener(this);
 		this.setTitle("Combo Shop");

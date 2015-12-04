@@ -25,7 +25,7 @@ public class Game extends BasicGameState {
 	Button launchbtn;
 	Button decline_btn;
 	Button end_turn_btn;
-	Popup popup;
+	StackShop popup;
 
 	int mouseX = 0;
 	int mouseY = 0;
@@ -158,7 +158,7 @@ public class Game extends BasicGameState {
 		updateFields(gc);
 		
 		if (launchbtn.isPressed()) {
-			popup = new Popup();
+			popup = new StackShop();
 			popup.display();
 		}
 		

@@ -6,6 +6,7 @@ import java.util.logging.Logger;
 import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
 import menu_package.Lobby_Screen;
@@ -34,6 +35,10 @@ public class GameHandler extends StateBasedGame {
 
 	}
 	
+	/**
+	 * Predefined Slick2D method.
+	 * @see BasicGameState
+	 */
 	public void initStatesList (GameContainer gc) throws SlickException {
 		//this.getState(SERVER_SCREEN).init(gc, this);
 		//this.getState(LOBBY_SCREEN).init(gc, this);
@@ -41,6 +46,10 @@ public class GameHandler extends StateBasedGame {
 		//this.enterState(GAME);
 	}
 
+	/**
+	 * Sets up the game by creating an AppGameContainer and applying relevant settings to it.
+	 * @see AppGameContainer
+	 */
 	public static void setup() {
 				
 		try {
