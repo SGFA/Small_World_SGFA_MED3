@@ -94,6 +94,13 @@ public class GameController {
 //		}
 	}
 	
+	public void endTurn() {
+		if (CURRENT_ACTIVE_PLAYER + 1 <= players.size())
+		CURRENT_ACTIVE_PLAYER++;
+		else
+		CURRENT_ACTIVE_PLAYER = 1;
+	}
+	
 	/**
 	 * Sets the active pair of a specified player to a pair from the stack and removes
 	 * it from the stack.
