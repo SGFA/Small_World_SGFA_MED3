@@ -72,9 +72,8 @@ public class Lobby_Screen extends BasicGameState {
 		if (launch_btn.isPressed() && isHost && GameController.players.size() > 1) {
 
 			GameController.launched.set(true);
-			System.out.println("Launched boolean is: " + GameController.launched.get() + " on the server");
+			GameController.initialize();
 			
-			MapHandler.initialize(GameController.players.size());			
 			sbg.enterState(3);
 			
 		} 

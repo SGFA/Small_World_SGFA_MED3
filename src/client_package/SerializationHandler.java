@@ -114,8 +114,5 @@ public class SerializationHandler implements java.io.Serializable {
 		GameController.ability = this.ability;
 		GameController.launched = this.launched;
 		GameController.CURRENT_ACTIVE_PLAYER = this.CURRENT_ACTIVE_PLAYER;
-		
-		System.out.println(this.CURRENT_ACTIVE_PLAYER);
-
 	}
 }
