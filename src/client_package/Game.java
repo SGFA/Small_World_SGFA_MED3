@@ -22,6 +22,7 @@ public class Game extends BasicGameState {
 	
 	Button launchbtn;
 	Button decline_btn;
+	Button end;
 	
 	GameController gameController = new GameController();
 	
@@ -44,6 +45,7 @@ public class Game extends BasicGameState {
 
 		launchbtn.display();
 		decline_btn.display();
+		end.display();
 	}
 
 	@Override
@@ -57,8 +59,8 @@ public class Game extends BasicGameState {
 
 		// GameController.initialize();
 		launchbtn = new Button(gc, new Image("assets/combo_shop.png"), 500, 500);
-		decline_btn = new Button(gc, new Image("assets/decline.png"), 550, 0);
-		
+		decline_btn = new Button(gc, new Image("assets/decline.png"), 450, 0);
+		end = new Button(gc, new Image("assets/end.png"), 650, 10);
 
 		//MapHandler.initialize(GameController.players.size());
 		//GameController.launched = true;
