@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 import map_package.MapHandler;
+import menu_package.Toast;
 import server_package.Client;
 import server_package.Server;
 
@@ -94,7 +95,10 @@ public class GameController {
 //		}
 	}
 	
-	public void endTurn() {
+	public static void endTurn() {
+		
+		Toast.set(10, 550,"Your turn has ended.", 3000);
+		
 		if (CURRENT_ACTIVE_PLAYER + 1 <= players.size())
 		CURRENT_ACTIVE_PLAYER++;
 		else
@@ -110,6 +114,11 @@ public class GameController {
 	public static void setPair(int playerPos, int stackPos) {
 		System.out.println("set pair");
 		
+		Toast.set(10, 550,"Pair assigned from stack.", 3000);
+		//System.out.println(GameController.players.get(CURRENT_ACTIVE_PLAYER - 1).pair[0].race);
+		//System.out.println("Pair is put in playerPos: " + playerPos);
+
+		if (PLAYER_ID == CURRENT_ACTIVE_PLAYER && players.get(CURRENT_ACTIVE_PLAYER - 1).pair[0] == null)
 		players.get(playerPos).pair[0] = new Pair(stack.raceStack.get(stackPos), stack.abilityStack.get(stackPos));
 		stack.raceStack.remove(stackPos);
 		stack.abilityStack.remove(stackPos);

@@ -1,8 +1,10 @@
 package client_package;
 
 import java.awt.FlowLayout;
+import java.awt.Graphics;
 import java.awt.GridLayout;
 import java.awt.Color;
+import java.awt.ComponentOrientation;
 import java.awt.Dialog;
 import java.awt.Image;
 import java.awt.event.MouseAdapter;
@@ -38,25 +40,53 @@ public class Popup extends JDialog implements MouseListener {
 		this.setResizable(false);
 		// this.setModalityType(Dialog.ModalityType.DOCUMENT_MODAL);
 
-		for (int i = 0; i < shopSize; i++) {
+		this.setVisible(true);
+		
 
+
+	}
+	
+	JLabel ability;
+	JLabel race;
+
+	public void display() {
+
+		this.getContentPane().removeAll();
+		this.validate();
+		
+		shopSize = arrayDeterminator();
+		this.getContentPane().setLayout(new GridLayout(0, 2));
+
+
+		for (int i = 0; i < shopSize; i++) {
+			
 			JPanel abilityPane = new JPanel(new FlowLayout(10, 10, 10));
 			abilityPane.setBackground(new Color(248, 245, 228));
-			JLabel ability = new JLabel(getComboImage("abilities/" + GameController.stack.abilityStack.get(i).name));
+			
+			ability = new JLabel(getComboImage("abilities/" + GameController.stack.abilityStack.get(i).name));
+
 			abilityPane.add(ability);
 			this.add(abilityPane);
-
+			
 			JPanel racePane = new JPanel(new FlowLayout(10, 10, 10));
 			racePane.setBackground(new Color(248, 245, 228));
-			JLabel race = new JLabel(getComboImage("races/" + GameController.stack.raceStack.get(i).name));
+			
+			race = new JLabel(getComboImage("races/" + GameController.stack.raceStack.get(i).name));
+
 			racePane.add(race);
 
 			this.add(racePane);
+			this.getContentPane().repaint();
 
 		}
-
 		this.setVisible(true);
 
+	}
+	
+	@Override
+	public void paint(Graphics g) {
+		// TODO Auto-generated method stub
+		super.paint(g);
 	}
 
 	/**
@@ -126,8 +156,10 @@ public class Popup extends JDialog implements MouseListener {
 
 		for (int j = 0; j < shopSize; j++) {
 			for (int i = 0; i < 2; i++) {
-				if (e.getX() > i * 600 / 2 && e.getX() < i * 600 / 2 + 300 && e.getY() > j * 600 / shopSize && e.getY() < j * 600 / shopSize + 600 /shopSize ) {
+				if (e.getX() > i * 600 / 2 && e.getX() < i * 600 / 2 + 300 && e.getY() > j * 600 / shopSize
+						&& e.getY() < j * 600 / shopSize + 600 / shopSize) {
 					GameController.setPair(GameController.CURRENT_ACTIVE_PLAYER, j);
+					display();
 				}
 			}
 		}

@@ -18,6 +18,7 @@ public class SerializationHandler implements java.io.Serializable {
 	Race race = GameController.race;
 	Ability ability = GameController.ability;
 	AtomicBoolean launched = GameController.launched;
+	int CURRENT_ACTIVE_PLAYER = GameController.CURRENT_ACTIVE_PLAYER;
 
 
 	ArrayList<Object> input = new ArrayList<Object>();
@@ -34,8 +35,7 @@ public class SerializationHandler implements java.io.Serializable {
 		input.add(race);
 		input.add(ability);
 		input.add(launched);
-		
-		System.out.println(stack.toString());
+		input.add(CURRENT_ACTIVE_PLAYER);
 		
 		try
 		{
@@ -104,6 +104,7 @@ public class SerializationHandler implements java.io.Serializable {
 		race = (Race) input.get(2);
 		ability = (Ability) input.get(3);
 		launched = (AtomicBoolean) input.get(4);
+		CURRENT_ACTIVE_PLAYER = (int) input.get(5);
 		
 	}
 	

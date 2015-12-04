@@ -14,8 +14,8 @@ public class Button {
 	
 	public Button(GameContainer gc ,Image img, int x, int y) {
 		this.img = img;
-		this.x = x;
-		this.y = y;
+		this.x = x - img.getWidth() / 2;
+		this.y = y - img.getHeight() / 2;
 		this.gc = gc;
 		
 		init();

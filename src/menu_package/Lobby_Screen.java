@@ -30,7 +30,7 @@ public class Lobby_Screen extends BasicGameState {
 
 		launch_btn = new Button(gc, new Image("res/launch_btn.png"), 600, 500);
 		
-		back_btn = new Button(gc, new Image("res/back.png"), 20, 500);
+		back_btn = new Button(gc, new Image("res/back.png"), 100, 500);
 
 		background = new Image("res/lobby background.png");
 

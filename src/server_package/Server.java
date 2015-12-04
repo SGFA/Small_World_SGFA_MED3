@@ -96,6 +96,7 @@ public class Server {
 				GameController.addPlayers(1);
 				
 				ObjectOutputStream out = new ObjectOutputStream(socket.getOutputStream());
+				//ObjectInputStream in = new ObjectInputStream(socket.getInputStream());
 
 				serializationHandler.serialize(out);
 

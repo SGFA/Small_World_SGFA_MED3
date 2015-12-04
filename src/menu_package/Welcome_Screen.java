@@ -23,9 +23,9 @@ public class Welcome_Screen extends BasicGameState {
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
 		background_img = new Image("res/small world.png");
 
-		play_btn = new Button(gc, new Image("res/Play now button.png"), 180, 270 );
+		play_btn = new Button(gc, new Image("res/Play now button.png"), 400, 270 );
 		
-		exit_btn = new Button(gc,new Image("res/exit.png"), 320, 440 );
+		exit_btn = new Button(gc,new Image("res/exit.png"), 400, 440);
 		
 
 	}

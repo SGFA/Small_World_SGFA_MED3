@@ -16,27 +16,24 @@ import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
 import map_package.Map;
-import map_package.MapHandler;
 import menu_package.Button;
 import menu_package.Toast;
 
 public class Game extends BasicGameState {
-	
+
 	Button launchbtn;
 	Button decline_btn;
-	Button end;
-	
+	Button end_turn_btn;
+
 	TrueTypeFont font;
-	
-	
+
 	GameController gameController = new GameController();
-	
+
 	public ArrayList<MouseOverArea> moa = new ArrayList<MouseOverArea>();
 
 	public Game(int state) {
 		// TODO Auto-generated constructor stub
-		
-		
+
 	}
 
 	@Override
@@ -45,46 +42,54 @@ public class Game extends BasicGameState {
 		for (int i = 0; i < Map.fields.size(); i++) {
 			Map.fields.get(i).image.draw(Map.fields.get(i).getPosX(), Map.fields.get(i).getPosY());
 		}
-		
+
 		font.drawString(100, 20, "YOUR SCORE:", Color.yellow);
 
 		Toast.draw(g);
 
 		launchbtn.display();
 		decline_btn.display();
-		end.display();
+		end_turn_btn.display();
 	}
 
 	@Override
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
-//		GameController.addPlayers(2);
-//		GameController.setPair(0, 0);
-//		MapHandler.initialize(GameController.players.size());
+		// GameController.addPlayers(2);
+		// GameController.setPair(0, 0);
+		// MapHandler.initialize(GameController.players.size());
 		// GameController.launched = true;
-		//GameController.addPlayers(2);
+		// GameController.addPlayers(2);
 		// GameController.setPair(0, 0);
 
 		// GameController.initialize()
 
 		Font awtFont = new Font("Times New Roman", Font.BOLD, 24);
-	    font = new TrueTypeFont(awtFont, false);
-	    		
-		launchbtn = new Button(gc, new Image("assets/combo_shop.png"), 500, 500);
-		decline_btn = new Button(gc, new Image("assets/decline.png"), 450, 0);
-		end = new Button(gc, new Image("assets/end.png"), 650, 10);
+		font = new TrueTypeFont(awtFont, false);
 
-		//MapHandler.initialize(GameController.players.size());
-		//GameController.launched = true;
+		launchbtn = new Button(gc, new Image("res/combo_shop.png"), 650, 520);
+		decline_btn = new Button(gc, new Image("res/decline.png"), 450, 30);
+		end_turn_btn = new Button(gc, new Image("res/end.png"), 650, 30);
+
+		// MapHandler.initialize(GameController.players.size());
+		// GameController.launched = true;
 	}
+
+	Popup popup;
 
 	@Override
 	public void update(GameContainer gc, StateBasedGame sbg, int arg2) throws SlickException {
 
 		if (launchbtn.isPressed()) {
-			Popup popup = new Popup();
+			popup = new Popup();
+			popup.display();
+
+
 		}
 		
-		updateFields(gc);
+		if (popup!= null) {
+		}
+
+
 
 	}
 
@@ -92,9 +97,13 @@ public class Game extends BasicGameState {
 	int mouseY = 0;
 
 	public void updateFields(GameContainer gc) {
-		
-		if(decline_btn.isPressed()){
+
+		if (decline_btn.isPressed()) {
 			gameController.decline(gameController.CURRENT_ACTIVE_PLAYER);
+		}
+
+		if (end_turn_btn.isPressed() && GameController.PLAYER_ID == GameController.CURRENT_ACTIVE_PLAYER) {
+			GameController.endTurn();
 		}
 
 		// If the MouseOverArea ArrayList is empty then it should be populated.
