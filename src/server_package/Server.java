@@ -12,6 +12,7 @@ public class Server {
 	private ServerSocket serverSocket;
 	private final int PORT = 5000;
 	public boolean running;
+	private boolean waiting;
 
 
 	/**
@@ -117,7 +118,9 @@ public class Server {
 			public void game(ObjectInputStream in, ObjectOutputStream out) {
 				
 			if (GameController.PLAYER_ID == GameController.CURRENT_ACTIVE_PLAYER.get()) {
-
+				
+				waiting = false;
+						
 				//System.out.println("I'm active");
 				serializationHandler.serialize(out);
 				
@@ -127,10 +130,13 @@ public class Server {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-			} else {
-				//GameController.serializationHandler.deserialize(in);
-				//GameController.serializationHandler.apply();
+				
+			} else if (waiting == false) {
 				serializationHandler.serialize(out);
+				waiting = true;
+			} else if (waiting == true) {
+				serializationHandler.deserialize(in);
+				serializationHandler.apply();
 			}
 
 		}

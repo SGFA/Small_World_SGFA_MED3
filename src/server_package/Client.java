@@ -16,6 +16,7 @@ public class Client {
 	private final int PORT = 5000;
 	public boolean running;
 	private String ip_address;
+	private boolean waiting = true;
 
 	public void connect(String ip_address) {
 		running = true;
@@ -50,16 +51,27 @@ public class Client {
 					while(GameController.launched.get()) {
 																	
 						if (GameController.PLAYER_ID == GameController.CURRENT_ACTIVE_PLAYER.get()) {
-							GameController.serializationHandler.deserialize(in);
-							GameController.serializationHandler.apply();
 							
-							Thread.sleep(1000);
-						} else {
-							//System.out.println("I'm waiting");
+							waiting = false;
+									
+							//System.out.println("I'm active");
+							GameController.serializationHandler.serialize(out);
+							
+							try {
+								Thread.sleep(1000);
+							} catch (InterruptedException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
+							
+						} else if (waiting == false) {
+							GameController.serializationHandler.serialize(out);
+							waiting = true;
+						} else if (waiting == true) {
 							GameController.serializationHandler.deserialize(in);
 							GameController.serializationHandler.apply();
-							Thread.sleep(1000);
 						}
+
 						
 					}
 				
