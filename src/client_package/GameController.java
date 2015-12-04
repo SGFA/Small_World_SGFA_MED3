@@ -104,7 +104,7 @@ public class GameController {
 
 	public static void endTurn() {
 
-		Toast.set(10, 550, "Your turn has ended.", 3000);
+		Toast.set(10, 580, "Your turn has ended.", 3000);
 
 		if (CURRENT_ACTIVE_PLAYER.get() + 1 <= players.size())
 			CURRENT_ACTIVE_PLAYER.incrementAndGet();
@@ -130,7 +130,7 @@ public class GameController {
 
 		if (PLAYER_ID == CURRENT_ACTIVE_PLAYER.get() && players.get(CURRENT_ACTIVE_PLAYER.get() - 1).pair[0] == null)
 			System.out.println("set pair");
-		Toast.set(10, 550, "Pair assigned from stack.", 3000);
+		Toast.set(10, 580, "Pair assigned from stack.", 3000);
 
 		players.get(playerPos).pair[0] = new Pair(stack.raceStack.get(stackPos), stack.abilityStack.get(stackPos));
 		stack.raceStack.remove(stackPos);

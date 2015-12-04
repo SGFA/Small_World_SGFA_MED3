@@ -110,15 +110,15 @@ public class Player implements java.io.Serializable {
 	 */
 	public void takeField(Field clickedField) {
 		
-		if (pair[0] != null) {
+		if (pair[GameController.PLAYER_ID - 1] != null) {
 
 			// If you have necessary amount of units you may take the field
-			if (pair[0].getUnits() >= clickedField.getDefenceValue() + 1) {
+			if (pair[GameController.PLAYER_ID - 1].getUnits() >= clickedField.getDefenceValue() + 1) {
 				attackingUnits = clickedField.getDefenceValue() + 1;
-				clickedField.setFieldOwner(1);
+				clickedField.setFieldOwner(GameController.PLAYER_ID);
 				clickedField.setAmountOfUnits(attackingUnits);
-				pair[0].setUnits(pair[0].getUnits() - attackingUnits);
-				Toast.set(10, 550,"You conquered a field with race: " + pair[0].race.name + " and ability: " + pair[0].ability.name, 3000);
+				pair[GameController.PLAYER_ID - 1].setUnits(pair[GameController.PLAYER_ID - 1].getUnits() - attackingUnits);
+				Toast.set(10, 580,"You conquered a field with race: " + pair[GameController.PLAYER_ID - 1].race.name + " and ability: " + pair[GameController.PLAYER_ID - 1].ability.name, 3000);
 
 			}
 
@@ -129,18 +129,19 @@ public class Player implements java.io.Serializable {
 			else {
 				
 				int reinforcements = Dice.roll();
-				if (pair[0].getUnits() + reinforcements >= clickedField.getDefenceValue() + 1) {
+				if (pair[GameController.PLAYER_ID - 1].getUnits() + reinforcements >= clickedField.getDefenceValue() + 1) {
 					attackingUnits = clickedField.getDefenceValue() + 1;
-					clickedField.setFieldOwner(1);
+					clickedField.setFieldOwner(GameController.PLAYER_ID);
 					clickedField.setAmountOfUnits(attackingUnits);
-					pair[0].setUnits(pair[0].getUnits() - attackingUnits);
+					pair[GameController.PLAYER_ID - 1].setUnits(pair[GameController.PLAYER_ID - 1].getUnits() - attackingUnits);
 				} else {
-					System.out.println("You dont have enough units to take this field");
+					Toast.set(10, 580,"You dont have enough units to take this field ", 3000);
 				}
 
 			}
 		} else {
-			Toast.set(10, 550,"Unable to conquer. Choose a race and ability from the stack.", 3000);
+			
+			Toast.set(10, 580,"Unable to conquer. Choose a race and ability from the stack.", 3000);
 		}
 	}
 
@@ -202,7 +203,7 @@ public class Player implements java.io.Serializable {
 
 				// Set player's units to current amount of units plus (field's
 				// units-1)
-				pair[0].setUnits(pair[0].getUnits() + (field.getAmountOfUnits() - 1));
+				pair[GameController.PLAYER_ID - 1].setUnits(pair[GameController.PLAYER_ID - 1].getUnits() + (field.getAmountOfUnits() - 1));
 
 				// Set amount of units on this field to 1
 				field.setAmountOfUnits(1);

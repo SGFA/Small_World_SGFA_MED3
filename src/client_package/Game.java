@@ -71,12 +71,15 @@ public class Game extends BasicGameState {
 		}
 
 		g.drawString("YOUR SCORE: " + GameController.players.get(GameController.PLAYER_ID - 1).getScore(), 20, 500);
-		//g.drawString("YOUR SCORE: ", 20, 500);
-
 		g.drawString("PLAYER: " + GameController.PLAYER_ID + " waiting for PLAYER " + GameController.CURRENT_ACTIVE_PLAYER, 20, 20);
 		
-		//if (GameController.players.get(GameController.PLAYER_ID).pair[0] != null)
-		//g.drawString("Active race: " + GameController.players.get(GameController.PLAYER_ID).pair[0].race.name, 50, 20);
+		
+		if (GameController.players.get(GameController.PLAYER_ID - 1).pair[0] != null) {
+		g.drawString("Active race: " + GameController.players.get(GameController.PLAYER_ID - 1).pair[0].race.name, 200, 500);
+		g.drawString("Active ability: " + GameController.players.get(GameController.PLAYER_ID - 1).pair[0].ability.name, 200, 520);
+		g.drawString("Unit amount: " + GameController.players.get(GameController.PLAYER_ID - 1).pair[0].getUnits(), 200, 540);
+
+		}
 		
 		Toast.draw(g);
 
