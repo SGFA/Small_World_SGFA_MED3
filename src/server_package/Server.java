@@ -84,15 +84,7 @@ public class Server {
 		}
 		
 		public void game(ObjectOutputStream out) {
-			while(GameController.launched.get() == true) {
 				serializationHandler.serialize(out);
-				try {
-					Thread.sleep(1000);
-				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
 		}
 
 		@Override

@@ -15,16 +15,21 @@ import org.newdawn.slick.state.StateBasedGame;
 
 import map_package.Map;
 import map_package.MapHandler;
+import menu_package.Button;
 import menu_package.Toast;
 
 public class Game extends BasicGameState {
-
+	
+	Button launchbtn;
+	
 	GameController gameController = new GameController();
-
+	
 	public ArrayList<MouseOverArea> moa = new ArrayList<MouseOverArea>();
 
 	public Game(int state) {
 		// TODO Auto-generated constructor stub
+		
+		
 	}
 
 	@Override
@@ -36,19 +41,34 @@ public class Game extends BasicGameState {
 
 		Toast.draw(g);
 
+		launchbtn.display();
 	}
 
 	@Override
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
-		GameController.addPlayers(2);
-		GameController.setPair(0, 0);
-		MapHandler.initialize(GameController.players.size());
+//		GameController.addPlayers(2);
+//		GameController.setPair(0, 0);
+//		MapHandler.initialize(GameController.players.size());
 		// GameController.launched = true;
+		//GameController.addPlayers(2);
+		// GameController.setPair(0, 0);
+
+		// GameController.initialize();
+		launchbtn = new Button(gc, new Image("res/launch_btn.png"), 600, 500);
+		
+		
+
+		//MapHandler.initialize(GameController.players.size());
+		//GameController.launched = true;
 	}
 
 	@Override
 	public void update(GameContainer gc, StateBasedGame sbg, int arg2) throws SlickException {
 
+		if (launchbtn.isPressed()) {
+			Popup popup = new Popup();
+		}
+		
 		updateFields(gc);
 
 	}

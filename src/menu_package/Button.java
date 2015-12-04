@@ -12,7 +12,7 @@ public class Button {
 	
 	int x, y;
 	
-	Button(GameContainer gc ,Image img, int x, int y) {
+	public Button(GameContainer gc ,Image img, int x, int y) {
 		this.img = img;
 		this.x = x;
 		this.y = y;
@@ -21,15 +21,15 @@ public class Button {
 		init();
 	}
 	
-	void init() {
+	public void init() {
 		moa = new MouseOverArea(gc, img, x, y);		
 	}
 	
-	void display() {
+	public void display() {
 		img.draw(x, y);
 	}
 	
-	boolean isPressed() {
+	public boolean isPressed() {
 		if (moa.isMouseOver()) {
 			if (gc.getInput().isMousePressed(0)) {
 				return true;
