@@ -64,7 +64,7 @@ public class Game extends BasicGameState {
 			Map.fields.get(i).image.draw(Map.fields.get(i).getPosX(), Map.fields.get(i).getPosY());
 		}
 		
-		font.drawString(100, 20, "YOUR SCORE:", Color.yellow);
+		font.drawString(100, 20, "YOUR SCORE: " , Color.yellow);
 
 		Toast.draw(g);
 
@@ -107,19 +107,19 @@ public class Game extends BasicGameState {
 		decline_btn = new Button(gc, new Image("assets/decline.png"), 450, 0);
 		end = new Button(gc, new Image("assets/end.png"), 650, 10);
 		
-		mountainsField1pt4 = new MapAttributes(gc, new Image("assets/mountain.png"), 418, 56);
-		mountainsField2pt1 = new MapAttributes(gc, new Image("assets/mountain.png"), 0, 131);
-		mountainsField3pt4 = new MapAttributes(gc, new Image("assets/mountain.png"), 521, 184);
+		mountainsField1pt4 = new MapAttributes(gc, new Image("assets/mountain.png"), 480, 65);
+		mountainsField2pt1 = new MapAttributes(gc, new Image("assets/mountain.png"), 155, 150);
+		mountainsField3pt4 = new MapAttributes(gc, new Image("assets/mountain.png"), 585, 235);
 		
-		magicField1pt2 = new MapAttributes(gc, new Image("assets/magic.png"), 206, 56);
-		magicField2pt6 = new MapAttributes(gc, new Image("assets/magic.png"), 639, 106);
-		magicField3pt3 = new MapAttributes(gc, new Image("assets/magic.png"), 421, 237);
-		magicField4pt1 = new MapAttributes(gc, new Image("assets/magic.png"), 0, 334);
+		magicField1pt2 = new MapAttributes(gc, new Image("assets/magic.png"), 240, 70);
+		magicField2pt6 = new MapAttributes(gc, new Image("assets/magic.png"), 739, 135);
+		magicField3pt3 = new MapAttributes(gc, new Image("assets/magic.png"), 450, 320);
+		magicField4pt1 = new MapAttributes(gc, new Image("assets/magic.png"), 100, 354);
 		
-		miningField1pt3 = new MapAttributes(gc, new Image("assets/mining.png"), 324, 56);
-		miningField2pt1 = new MapAttributes(gc, new Image("assets/mining.png"), 0, 131);
-		miningField3pt5 = new MapAttributes(gc, new Image("assets/mining.png"), 698, 210);
-		miningField4pt3 = new MapAttributes(gc, new Image("assets/mining.png"), 327, 359);
+		miningField1pt3 = new MapAttributes(gc, new Image("assets/mining.png"), 350, 66);
+		miningField2pt1 = new MapAttributes(gc, new Image("assets/mining.png"), 50, 181);
+		miningField3pt5 = new MapAttributes(gc, new Image("assets/mining.png"), 725, 225);
+		miningField4pt3 = new MapAttributes(gc, new Image("assets/mining.png"), 350, 430);
 
 		//MapHandler.initialize(GameController.players.size());
 		//GameController.launched = true;
