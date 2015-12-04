@@ -25,6 +25,11 @@ public class Game extends BasicGameState {
 	Button launchbtn;
 	Button decline_btn;
 	Button end_turn_btn;
+	Popup popup;
+
+	int mouseX = 0;
+	int mouseY = 0;
+
 
 	MapAttributes mountainsField1pt4;
 	MapAttributes mountainsField2pt1;
@@ -54,6 +59,10 @@ public class Game extends BasicGameState {
 
 	}
 
+	/**
+	 * Predefined Slick2D method.
+	 * @see BasicGameState
+	 */
 	@Override
 	public void render(GameContainer gc, StateBasedGame sbg, org.newdawn.slick.Graphics g) throws SlickException {
 
@@ -86,6 +95,11 @@ public class Game extends BasicGameState {
 
 	}
 
+
+	/**
+	 * Predefined Slick2D method.
+	 * @see BasicGameState
+	 */
 	@Override
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
 		// GameController.addPlayers(2);
@@ -123,8 +137,10 @@ public class Game extends BasicGameState {
 		// GameController.launched = true;
 	}
 
-	Popup popup;
-
+	/**
+	 * Predefined Slick2D method.
+	 * @see BasicGameState
+	 */
 	@Override
 	public void update(GameContainer gc, StateBasedGame sbg, int arg2) throws SlickException {
 
@@ -145,9 +161,11 @@ public class Game extends BasicGameState {
 		
 	}
 
-	int mouseX = 0;
-	int mouseY = 0;
 
+	/**
+	 * Runs through and updates the rendering of all fields. Also runs the conquer method on the field you click.
+	 * @param gc the GameContainer where the mouse positions and MouseOverAreas should be handled
+	 */
 	public void updateFields(GameContainer gc) {
 
 		// If the MouseOverArea ArrayList is empty then it should be populated.
@@ -182,6 +200,11 @@ public class Game extends BasicGameState {
 		}
 	}
 
+
+	/**
+	 * Predefined Slick2D method.
+	 * @see BasicGameState
+	 */
 	@Override
 	public int getID() {
 		// TODO Auto-generated method stub
