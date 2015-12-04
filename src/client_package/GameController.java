@@ -108,6 +108,8 @@ public class GameController {
 	 * @param stackPos the position of the pair in the stack.
 	 */
 	public static void setPair(int playerPos, int stackPos) {
+		System.out.println("set pair");
+		
 		players.get(playerPos).pair[0] = new Pair(stack.raceStack.get(stackPos), stack.abilityStack.get(stackPos));
 		stack.raceStack.remove(stackPos);
 		stack.abilityStack.remove(stackPos);
