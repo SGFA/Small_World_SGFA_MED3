@@ -13,7 +13,7 @@ import menu_package.Toast;
  */
 public class Player implements java.io.Serializable {
 
-	int score;
+	private int score;
 	Pair[] pair = new Pair[2];
 	boolean hasFields = false;
 	int attackingUnits = 0;
@@ -208,9 +208,23 @@ public class Player implements java.io.Serializable {
 
 			}
 		}
+		
 
 	}
 
+	//Sets the score by counting the amount of fields the current player owns
+	public void scorePoint(){
+		
+		for(Field ownedFields: Map.fields){
+			if(ownedFields.getFieldOwner()==id)
+			{
+				setScore(getScore() + 1);
+			}
+		}
+		System.out.println("Score: "+getScore());
+		
+	}
+	
 	/**
 	 * Gets the ID of the player.
 	 * 
@@ -230,4 +244,11 @@ public class Player implements java.io.Serializable {
 		this.id = id;
 	}
 
+	private int getScore() {
+		return score;
+	}
+
+	private void setScore(int score) {
+		this.score = score;
+	}
 }
