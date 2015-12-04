@@ -70,7 +70,9 @@ public class Game extends BasicGameState {
 			Map.fields.get(i).image.draw(Map.fields.get(i).getPosX(), Map.fields.get(i).getPosY());
 		}
 
-		font.drawString(300, 550, "YOUR SCORE: " , Color.yellow);
+		g.drawString("YOUR SCORE: " + GameController.players.get(GameController.PLAYER_ID - 1).getScore(), 20, 500);
+		//g.drawString("YOUR SCORE: ", 20, 500);
+
 		g.drawString("PLAYER: " + GameController.PLAYER_ID + " waiting for PLAYER " + GameController.CURRENT_ACTIVE_PLAYER, 20, 20);
 		
 		//if (GameController.players.get(GameController.PLAYER_ID).pair[0] != null)

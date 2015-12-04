@@ -109,12 +109,8 @@ public class Player implements java.io.Serializable {
 	 *            - the target Field object.
 	 */
 	public void takeField(Field clickedField) {
-
-		System.out.println("try");
 		
 		if (pair[0] != null) {
-
-			System.out.println("Field taken");
 
 			// If you have necessary amount of units you may take the field
 			if (pair[0].getUnits() >= clickedField.getDefenceValue() + 1) {
@@ -122,6 +118,8 @@ public class Player implements java.io.Serializable {
 				clickedField.setFieldOwner(1);
 				clickedField.setAmountOfUnits(attackingUnits);
 				pair[0].setUnits(pair[0].getUnits() - attackingUnits);
+				Toast.set(10, 550,"You conquered a field with race: " + pair[0].race.name + " and ability: " + pair[0].ability.name, 3000);
+
 			}
 
 			/*
@@ -129,6 +127,7 @@ public class Player implements java.io.Serializable {
 			 * die to add to your amount of units
 			 */
 			else {
+				
 				int reinforcements = Dice.roll();
 				if (pair[0].getUnits() + reinforcements >= clickedField.getDefenceValue() + 1) {
 					attackingUnits = clickedField.getDefenceValue() + 1;
@@ -157,7 +156,7 @@ public class Player implements java.io.Serializable {
 	 */
 	public void conquer(Field clickedField) {
 
-		// Check is the current player has owns any fields
+		// Check is the current player owns any fields
 		boolean hasFields = false;
 		for (Field otherField : Map.fields) {
 			if (otherField.getFieldOwner() == GameController.CURRENT_ACTIVE_PLAYER.get()) {
