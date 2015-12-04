@@ -216,7 +216,7 @@ public class Player implements java.io.Serializable {
 	public void scorePoint(){
 		
 		for(Field ownedFields: Map.fields){
-			if(ownedFields.getFieldOwner()==id)
+			if(ownedFields.getFieldOwner()==GameController.CURRENT_ACTIVE_PLAYER)
 			{
 				setScore(getScore() + 1);
 			}
