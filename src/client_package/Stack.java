@@ -8,7 +8,7 @@ import java.util.*;
  * session e.g. keeping track of the card stack.
  *
  */
-public class Stack implements java.io.Serializable{
+public class Stack implements java.io.Serializable {
 
 	// Databases for races and abilities
 	private ArrayList<Race> raceDb = new ArrayList<Race>();
@@ -20,7 +20,6 @@ public class Stack implements java.io.Serializable{
 
 	public void initDb() {
 
-		
 		// Initialize races
 //		raceDb.add(new Race("AMAZONS",      6, "Bonus", "addUnits",  4, "isConquering:true"));           //effect: adds 4 units | req: only while conquering 
 		raceDb.add(new Race("DWARVES",      3, "Bonus", "addPoints", 1, "hasMine","true"));                //effect: additional coins for X fulfilled requirement | req: has mine
