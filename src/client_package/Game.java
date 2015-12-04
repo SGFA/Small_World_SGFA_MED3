@@ -21,6 +21,7 @@ import menu_package.Toast;
 public class Game extends BasicGameState {
 	
 	Button launchbtn;
+	Button decline_btn;
 	
 	GameController gameController = new GameController();
 	
@@ -42,6 +43,7 @@ public class Game extends BasicGameState {
 		Toast.draw(g);
 
 		launchbtn.display();
+		decline_btn.display();
 	}
 
 	@Override
@@ -54,8 +56,8 @@ public class Game extends BasicGameState {
 		// GameController.setPair(0, 0);
 
 		// GameController.initialize();
-		launchbtn = new Button(gc, new Image("res/launch_btn.png"), 600, 500);
-		
+		launchbtn = new Button(gc, new Image("assets/combo_shop.png"), 500, 500);
+		decline_btn = new Button(gc, new Image("assets/decline.png"), 550, 0);
 		
 
 		//MapHandler.initialize(GameController.players.size());
@@ -77,6 +79,10 @@ public class Game extends BasicGameState {
 	int mouseY = 0;
 
 	public void updateFields(GameContainer gc) {
+		
+		if(decline_btn.isPressed()){
+			gameController.decline(gameController.CURRENT_ACTIVE_PLAYER);
+		}
 
 		// If the MouseOverArea ArrayList is empty then it should be populated.
 		if (moa.isEmpty()) {
