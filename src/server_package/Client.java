@@ -19,7 +19,7 @@ public class Client {
 
 	public void connect(String ip_address) {
 		running = true;
-
+		
 		Thread t = new Thread(new ConnectionHandler());
 		t.start();
 	}
@@ -33,16 +33,33 @@ public class Client {
 				 * Create a connection to the server socket on the host
 				 */
 				Socket socket = new Socket(ip_address, 5000);
-
+				
 				ObjectInputStream in = new ObjectInputStream(socket.getInputStream());
 				ObjectOutputStream out = new ObjectOutputStream(socket.getOutputStream());
+				
+				GameController.serializationHandler.deserialize(in);
+				GameController.serializationHandler.apply();
 
-					GameController.serializationHandler.deserialize(in);
-					GameController.serializationHandler.apply();
 					GameController.PLAYER_ID = GameController.players.size();
-					System.out.println(GameController.PLAYER_ID);
+
+					while(!GameController.launched.get()) {
+						GameController.serializationHandler.deserialize(in);
+						GameController.serializationHandler.apply();
+					}					
 					
-					while(true) {
+					while(GameController.launched.get()) {
+																	
+						if (GameController.PLAYER_ID == GameController.CURRENT_ACTIVE_PLAYER) {
+							GameController.serializationHandler.deserialize(in);
+							GameController.serializationHandler.apply();
+							
+							Thread.sleep(1000);
+						} else {
+							System.out.println("I'm waiting");
+							GameController.serializationHandler.deserialize(in);
+							GameController.serializationHandler.apply();
+							Thread.sleep(1000);
+						}
 						
 					}
 				

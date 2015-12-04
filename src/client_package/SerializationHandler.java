@@ -28,10 +28,6 @@ public class SerializationHandler implements java.io.Serializable {
 	
 	public void serialize(ObjectOutputStream out) {
 		
-		System.out.println("serialize: " + this.launched);
-		System.out.println("gameController: " + GameController.launched);
-
-		
 		// Add variables to input array
 		input.add(stack);
 		input.add(players);
@@ -54,8 +50,6 @@ public class SerializationHandler implements java.io.Serializable {
 //			// Close output streams
 //			objectOutputStream.close();
 //			fileOutputStream.close();
-
-			System.out.println("Successfully serialized input to 'data.ser'.");
 
 		} catch (IOException i)
 		{
@@ -109,8 +103,6 @@ public class SerializationHandler implements java.io.Serializable {
 		ability = (Ability) input.get(3);
 		launched = (AtomicBoolean) input.get(4);
 
-
-		System.out.println("Successfully deserialized input to variables.");
 		System.out.println("launched: " + launched);
 		
 	}
