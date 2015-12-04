@@ -1,3 +1,24 @@
+# Slick2D SmallWorld SGFA
+
+
+SmallWorld SGFA is a digitised multiplayer board game. It is designed to be played by configurations of 2/3/4 or 5 players, how ever only 2 player map is programmed and used in this version.
+
+Rules and gameplay was kept as in original SmallWorld game. However majority of functionalities are yet to be designed. Currently game contains 4 stages:
+
+
+Welcome Screen : User can choose to play a gay or exit the program.
+
+Server Screen : User can choose to join IP, become a host of the game or go back to the previous stage
+
+Lobby Screen : User can see if there are any players connected and ( if he is a host and have guests) launch the game
+
+Game stage : this state is the actual game play.One by one Players can buy combo cards and start conquering areas on the map. When first player is done, he press end round button and another player can start his turn.
+
+In github Wiki of this project you can find detailed documentation and the process while creating it.
+
+
+
+
 # Slick2D Eclipse Seed Project
 This an eclipse project containing all the files necessary to begin developing games with [Slick 2D](http://slick.ninjacave.com/). You can fork this repository, clone it on your disk and start to work in Eclipse.
 
