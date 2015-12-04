@@ -9,7 +9,7 @@ package client_package;
  * @see Ability
  *
  */
-public class Pair {
+public class Pair implements java.io.Serializable {
 
 	Race race;
 	Ability ability;

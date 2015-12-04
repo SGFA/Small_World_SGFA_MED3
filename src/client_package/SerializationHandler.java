@@ -35,6 +35,8 @@ public class SerializationHandler implements java.io.Serializable {
 		input.add(ability);
 		input.add(launched);
 		
+		System.out.println(stack.toString());
+		
 		try
 		{
 			// Create file and object output streams
@@ -108,6 +110,7 @@ public class SerializationHandler implements java.io.Serializable {
 	public void apply() {  
 		GameController.players = this.players;
 		GameController.stack = this.stack;
+		System.out.println(this.stack.toString());
 		GameController.race = this.race;
 		GameController.ability = this.ability;
 		GameController.launched = this.launched;
