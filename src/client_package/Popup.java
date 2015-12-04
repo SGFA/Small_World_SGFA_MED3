@@ -5,6 +5,9 @@ import java.awt.GridLayout;
 import java.awt.Color;
 import java.awt.Dialog;
 import java.awt.Image;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.net.MalformedURLException;
 
 import javax.swing.ImageIcon;
@@ -22,7 +25,7 @@ import javafx.stage.PopupWindow;
 public class Popup extends JDialog {
 
 	
-	private final int shopSize = 4;
+	private int shopSize = arrayDeterminator();
 	
 	public Popup () {
 
@@ -40,12 +43,28 @@ public class Popup extends JDialog {
 			abilityPane.setBackground(new Color(248, 245, 228));
 			JLabel ability = new JLabel(getComboImage("abilities/" + GameController.stack.abilityStack.get(i).name));
 			abilityPane.add(ability);
+			
+			ability.addMouseListener(new MouseAdapter() {
+				public void mouseClicked(MouseEvent e) {
+					System.out.println("You clicked on an ability.");
+				}
+			});
+			
 			this.add(abilityPane);
+			
 			
 			JPanel racePane = new JPanel(new FlowLayout(10,10,10));
 			racePane.setBackground(new Color(248, 245, 228));
 			JLabel race = new JLabel(getComboImage("races/" + GameController.stack.raceStack.get(i).name));
 			racePane.add(race);
+			
+			race.addMouseListener(new MouseAdapter() {
+				public void mouseClicked(MouseEvent e) {
+					System.out.println("You clicked on a race.");
+
+				}
+			});
+			
 			this.add(racePane);
 			
 		}
@@ -73,8 +92,20 @@ public class Popup extends JDialog {
                 80, 
                 java.awt.Image.SCALE_SMOOTH);
         localImage = new ImageIcon(newimg);
+        
         return localImage;
-       
+        
+	}
+	/**
+	 * Checks which of the stack's amount of abilities and races that is smaller 
+	 * and returns that integer. For use in avoiding IndexOutOfBounds errors in 
+	 * the shop.
+	 * @return smallest integer of GameController.stack.abilityStack.size() and GameController.stack.raceStack.size())
+	 */
+	private int arrayDeterminator() {
+		if (GameController.stack.abilityStack.size() < GameController.stack.raceStack.size()) {
+			return GameController.stack.abilityStack.size();
+		} else return GameController.stack.raceStack.size();
 	}
 	
 }
