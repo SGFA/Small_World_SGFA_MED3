@@ -61,7 +61,8 @@ public class Game extends BasicGameState {
 			Map.fields.get(i).image.draw(Map.fields.get(i).getPosX(), Map.fields.get(i).getPosY());
 		}
 
-		font.drawString(100, 20, "YOUR SCORE: " , Color.yellow);
+		font.drawString(300, 550, "YOUR SCORE: " , Color.yellow);
+		g.drawString("PLAYER: " + GameController.PLAYER_ID + " waiting for PLAYER " + GameController.CURRENT_ACTIVE_PLAYER, 20, 20);
 
 		Toast.draw(g);
 
@@ -130,22 +131,8 @@ public class Game extends BasicGameState {
 		if (launchbtn.isPressed()) {
 			popup = new Popup();
 			popup.display();
-
-
 		}
 		
-		if (popup!= null) {
-		}
-
-
-
-	}
-
-	int mouseX = 0;
-	int mouseY = 0;
-
-	public void updateFields(GameContainer gc) {
-
 		if (decline_btn.isPressed()) {
 			gameController.decline(gameController.CURRENT_ACTIVE_PLAYER);
 		}
@@ -153,6 +140,13 @@ public class Game extends BasicGameState {
 		if (end_turn_btn.isPressed() && GameController.PLAYER_ID == GameController.CURRENT_ACTIVE_PLAYER) {
 			GameController.endTurn();
 		}
+		
+	}
+
+	int mouseX = 0;
+	int mouseY = 0;
+
+	public void updateFields(GameContainer gc) {
 
 		// If the MouseOverArea ArrayList is empty then it should be populated.
 		if (moa.isEmpty()) {

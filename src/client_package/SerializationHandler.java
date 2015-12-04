@@ -20,7 +20,6 @@ public class SerializationHandler implements java.io.Serializable {
 	AtomicBoolean launched = GameController.launched;
 	int CURRENT_ACTIVE_PLAYER = GameController.CURRENT_ACTIVE_PLAYER;
 
-
 	ArrayList<Object> input = new ArrayList<Object>();
 
 	/**
@@ -111,9 +110,12 @@ public class SerializationHandler implements java.io.Serializable {
 	public void apply() {  
 		GameController.players = this.players;
 		GameController.stack = this.stack;
-		System.out.println(this.stack.toString());
 		GameController.race = this.race;
 		GameController.ability = this.ability;
 		GameController.launched = this.launched;
+		GameController.CURRENT_ACTIVE_PLAYER = this.CURRENT_ACTIVE_PLAYER;
+		
+		System.out.println(this.CURRENT_ACTIVE_PLAYER);
+
 	}
 }
