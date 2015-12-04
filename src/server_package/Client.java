@@ -55,7 +55,7 @@ public class Client {
 							
 							Thread.sleep(1000);
 						} else {
-							System.out.println("I'm waiting");
+							//System.out.println("I'm waiting");
 							GameController.serializationHandler.deserialize(in);
 							GameController.serializationHandler.apply();
 							Thread.sleep(1000);

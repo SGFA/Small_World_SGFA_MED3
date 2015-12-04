@@ -63,7 +63,10 @@ public class Game extends BasicGameState {
 
 		font.drawString(300, 550, "YOUR SCORE: " , Color.yellow);
 		g.drawString("PLAYER: " + GameController.PLAYER_ID + " waiting for PLAYER " + GameController.CURRENT_ACTIVE_PLAYER, 20, 20);
-
+		
+		//if (GameController.players.get(GameController.PLAYER_ID).pair[0] != null)
+		//g.drawString("Active race: " + GameController.players.get(GameController.PLAYER_ID).pair[0].race.name, 50, 20);
+		
 		Toast.draw(g);
 
 		launchbtn.display();
@@ -88,8 +91,11 @@ public class Game extends BasicGameState {
 
 	@Override
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
-		// GameController.addPlayers(2);
-		// GameController.setPair(0, 0);
+//		 GameController.createStack();
+//		 GameController.addPlayers(2);
+//		 GameController.setPair(0, 0);
+//		 System.out.println(GameController.players.get(0).pair[0].race.name);
+		 
 		// MapHandler.initialize(GameController.players.size());
 		// GameController.launched = true;
 		// GameController.addPlayers(2);

@@ -42,8 +42,6 @@ public class GameHandler extends StateBasedGame {
 	}
 
 	public static void setup() {
-
-		GameController.createStack();
 				
 		try {
 			AppGameContainer appgc;

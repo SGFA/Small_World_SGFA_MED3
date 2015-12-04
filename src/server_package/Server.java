@@ -118,7 +118,7 @@ public class Server {
 				
 			if (GameController.PLAYER_ID == GameController.CURRENT_ACTIVE_PLAYER) {
 
-				System.out.println("I'm active");
+				//System.out.println("I'm active");
 				serializationHandler.serialize(out);
 				
 				try {
