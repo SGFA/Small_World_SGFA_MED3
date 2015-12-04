@@ -1,5 +1,6 @@
 package client_package;
 
+import java.awt.Font;
 import java.util.ArrayList;
 
 import javax.swing.text.DefaultEditorKit.DefaultKeyTypedAction;
@@ -9,6 +10,7 @@ import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.TrueTypeFont;
 import org.newdawn.slick.gui.MouseOverArea;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
@@ -23,6 +25,9 @@ public class Game extends BasicGameState {
 	Button launchbtn;
 	Button decline_btn;
 	Button end;
+	
+	TrueTypeFont font;
+	
 	
 	GameController gameController = new GameController();
 	
@@ -40,6 +45,8 @@ public class Game extends BasicGameState {
 		for (int i = 0; i < Map.fields.size(); i++) {
 			Map.fields.get(i).image.draw(Map.fields.get(i).getPosX(), Map.fields.get(i).getPosY());
 		}
+		
+		font.drawString(100, 20, "YOUR SCORE:", Color.yellow);
 
 		Toast.draw(g);
 
@@ -57,7 +64,11 @@ public class Game extends BasicGameState {
 		//GameController.addPlayers(2);
 		// GameController.setPair(0, 0);
 
-		// GameController.initialize();
+		// GameController.initialize()
+
+		Font awtFont = new Font("Times New Roman", Font.BOLD, 24);
+	    font = new TrueTypeFont(awtFont, false);
+	    		
 		launchbtn = new Button(gc, new Image("assets/combo_shop.png"), 500, 500);
 		decline_btn = new Button(gc, new Image("assets/decline.png"), 450, 0);
 		end = new Button(gc, new Image("assets/end.png"), 650, 10);
