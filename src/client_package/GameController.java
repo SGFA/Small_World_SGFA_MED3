@@ -38,7 +38,7 @@ public class GameController {
 	/**
 	 * Represents the player whose turn it is.
 	 */
-	public static int CURRENT_ACTIVE_PLAYER; 
+	public static int CURRENT_ACTIVE_PLAYER = 1; 
 	
 	/**
 	 * Represents the player whose turn it is.

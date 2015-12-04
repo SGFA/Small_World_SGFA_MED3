@@ -32,7 +32,6 @@ public class Server {
 		
 		GameController.addPlayers(1);
 		GameController.PLAYER_ID = GameController.players.size();
-		System.out.println(GameController.PLAYER_ID);
 
 		System.out.println("Waiting for client ...");
 		
@@ -49,6 +48,7 @@ public class Server {
 				while (running) {			
 					try {
 						socket = serverSocket.accept();
+
 						new ConnectionHandler();
 					} catch (Exception e) {
 						e.printStackTrace();
@@ -80,13 +80,10 @@ public class Server {
 			 * Start the server in a separate thread so that it will not
 			 * interfere with the Main thread.
 			 */
+			
 			Thread t = new Thread(this);
 			t.start();
 			
-		}
-		
-		public void game(ObjectOutputStream out) {
-				serializationHandler.serialize(out);
 		}
 
 		@Override
@@ -95,20 +92,43 @@ public class Server {
 				/**
 				 * Send serialized objects to client
 				 */
-				
-				GameController.addPlayers(1);	
+								
+				GameController.addPlayers(1);
 				
 				ObjectOutputStream out = new ObjectOutputStream(socket.getOutputStream());
-				
-				while(GameController.launched.get() == false) {
-				serializationHandler.serialize(out);
-				Thread.sleep(1000);
-				}
-				
-				game(out);
 
+				serializationHandler.serialize(out);
+
+				while (!GameController.launched.get()) {
+					serializationHandler.serialize(out);
+				}			
+				
+				while (GameController.launched.get()) {
+					
+					game(out);
+				}		
+				
 			} catch (Exception e) {
 				// TODO: handle exception
+			}
+		}
+		
+			public void game(ObjectOutputStream out) {
+				
+			if (GameController.PLAYER_ID == GameController.CURRENT_ACTIVE_PLAYER) {
+
+				System.out.println("I'm active");
+				serializationHandler.serialize(out);
+				
+				try {
+					Thread.sleep(1000);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			} else {
+				//GameController.serializationHandler.deserialize(in);
+				//GameController.serializationHandler.apply();
 			}
 
 		}
