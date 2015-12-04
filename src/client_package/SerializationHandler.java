@@ -102,8 +102,6 @@ public class SerializationHandler implements java.io.Serializable {
 		race = (Race) input.get(2);
 		ability = (Ability) input.get(3);
 		launched = (AtomicBoolean) input.get(4);
-
-		System.out.println("launched: " + launched);
 		
 	}
 	
