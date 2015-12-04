@@ -32,8 +32,10 @@ public class Server {
 		
 		GameController.addPlayers(1);
 		GameController.PLAYER_ID = GameController.players.size();
-		
+		System.out.println(GameController.PLAYER_ID);
+
 		System.out.println("Waiting for client ...");
+		
 
 		/**
 		 * The server does a loop here to accept clients who initiate a

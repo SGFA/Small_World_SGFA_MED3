@@ -37,11 +37,15 @@ public class Client {
 				ObjectInputStream in = new ObjectInputStream(socket.getInputStream());
 				ObjectOutputStream out = new ObjectOutputStream(socket.getOutputStream());
 
-				while (true) {
 					GameController.serializationHandler.deserialize(in);
 					GameController.serializationHandler.apply();
-					Thread.sleep(1000);
-				}
+					GameController.PLAYER_ID = GameController.players.size();
+					System.out.println(GameController.PLAYER_ID);
+					
+					while(true) {
+						
+					}
+				
 
 			} catch (Exception e) {
 				// TODO: handle exception
