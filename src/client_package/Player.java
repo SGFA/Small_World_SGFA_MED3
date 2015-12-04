@@ -13,7 +13,7 @@ import menu_package.Toast;
  */
 public class Player implements java.io.Serializable {
 
-	private int score;
+	private int score = 5;
 	Pair[] pair = new Pair[2];
 	boolean hasFields = false;
 	int attackingUnits = 0;
@@ -158,7 +158,7 @@ public class Player implements java.io.Serializable {
 		// Check is the current player has owns any fields
 		boolean hasFields = false;
 		for (Field otherField : Map.fields) {
-			if (otherField.getFieldOwner() == id) {
+			if (otherField.getFieldOwner() == GameController.CURRENT_ACTIVE_PLAYER) {
 				hasFields = true;
 			}
 		}
@@ -167,7 +167,7 @@ public class Player implements java.io.Serializable {
 		// owns
 		boolean ownAnyAdjacencies = false;
 		for (Field otherField : clickedField.adjacencies) {
-			if (otherField.getFieldOwner() == id) {
+			if (otherField.getFieldOwner() == GameController.CURRENT_ACTIVE_PLAYER) {
 				ownAnyAdjacencies = true;
 			}
 		}
@@ -212,7 +212,9 @@ public class Player implements java.io.Serializable {
 
 	}
 
-	//Sets the score by counting the amount of fields the current player owns
+	/**
+	 * Sets the score for this object by counting the amount of fields the current player owns.
+	 */
 	public void scorePoint(){
 		
 		for(Field ownedFields: Map.fields){
@@ -244,10 +246,18 @@ public class Player implements java.io.Serializable {
 		this.id = id;
 	}
 
+	/**
+	 * get the Score of the player.
+	 * @return An integer used for scoring points in the game
+	 */
 	public int getScore() {
 		return score;
 	}
 
+	/**
+	 * Set the Score of the player
+	 * @param score An integer used for scoring points in the game-
+	 */
 	public void setScore(int score) {
 		this.score = score;
 	}
