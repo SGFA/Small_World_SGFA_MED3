@@ -5,7 +5,7 @@ package client_package;
  * @see Template
  */
 
-public class Race extends Template implements java.io.Serializable{
+public class Race extends Template implements java.io.Serializable {
 
 	/**
 	 * 

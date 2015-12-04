@@ -6,7 +6,7 @@ package client_package;
  * @see Race
  * @see Ability
  */
-public abstract class Template {
+public abstract class Template implements java.io.Serializable {
 
 	String name;
 	int unitAmount;
